@@ -4,8 +4,13 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 27
+    dataBinding {
+        enabled = true
+    }
     defaultConfig {
         applicationId "e.yoppie.newengineerblogs"
         minSdkVersion 15
