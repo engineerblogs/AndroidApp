@@ -1,10 +1,16 @@
 package e.yoppie.newengineerblogs.view.viewHolder
 
+import android.databinding.ViewDataBinding
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
 import e.yoppie.newengineerblogs.R
+import e.yoppie.newengineerblogs.viewmodel.ArticleViewModel
 
-class ArticleViewHolder(view: View) : RecyclerView.ViewHolder(view){
-    val articleTextView: TextView = view.findViewById(R.id.articleTextView)
+class ArticleViewHolder(private val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root){
+    fun bind(articleViewModel: ArticleViewModel){
+        binding.setVariable(1, articleViewModel)
+        binding.executePendingBindings()
+    }
+//    val articleTitleTextView: TextView = view.findViewById(R.id.articleTitleTextView)
 }
