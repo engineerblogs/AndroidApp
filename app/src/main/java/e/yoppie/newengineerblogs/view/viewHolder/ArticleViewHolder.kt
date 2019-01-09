@@ -2,9 +2,6 @@ package e.yoppie.newengineerblogs.view.viewHolder
 
 import android.databinding.ViewDataBinding
 import android.support.v7.widget.RecyclerView
-import android.view.View
-import android.widget.TextView
-import e.yoppie.newengineerblogs.R
 import e.yoppie.newengineerblogs.viewmodel.ArticleViewModel
 
 class ArticleViewHolder(private val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root){
@@ -12,5 +9,4 @@ class ArticleViewHolder(private val binding: ViewDataBinding) : RecyclerView.Vie
         binding.setVariable(1, articleViewModel)
         binding.executePendingBindings()
     }
-//    val articleTitleTextView: TextView = view.findViewById(R.id.articleTitleTextView)
 }
