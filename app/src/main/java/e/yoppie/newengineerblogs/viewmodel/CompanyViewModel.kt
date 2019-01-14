@@ -1,6 +1,5 @@
 package e.yoppie.newengineerblogs.viewmodel
 
-import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import e.yoppie.newengineerblogs.model.data.Article
@@ -8,7 +7,7 @@ import e.yoppie.newengineerblogs.model.data.Category
 
 class CompanyViewModel : ViewModel() {
 
-    var categoryList: LiveData<List<Category>>? = null
+    var categoryList: MutableLiveData<List<Category>>? = null
 
     init {
         categoryList = loadAllCategoryArticles()

@@ -1,41 +1,29 @@
 package e.yoppie.newengineerblogs.view.activity
 
+import android.arch.lifecycle.ViewModelProviders
+import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
-import android.support.v4.view.ViewPager
-import android.view.View
 import e.yoppie.newengineerblogs.R
+import e.yoppie.newengineerblogs.databinding.ActivityMainBinding
 import e.yoppie.newengineerblogs.view.adapter.CategoryFragmentPagerAdapter
+import e.yoppie.newengineerblogs.viewmodel.CompanyViewModel
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        val testList: ArrayList<String> = ArrayList()
-        testList.add("a")
-        testList.add("s")
-        testList.add("d")
-        testList.add("f")
-        testList.add("q")
-        testList.add("w")
-        testList.add("e")
-        testList.add("r")
-        testList.add("h")
-        testList.add("j")
-        testList.add("k")
-        testList.add("l")
+        val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        val viewModel = ViewModelProviders.of(this).get(CompanyViewModel::class.java)
+        binding.viewModel = viewModel
 
-        val tabLayout = findViewById<View>(R.id.tabLayout) as TabLayout
-        val viewPager = findViewById<View>(R.id.viewPager) as ViewPager
-        viewPager.offscreenPageLimit = 2
-        val adapter = CategoryFragmentPagerAdapter(supportFragmentManager, testList)
+        binding.mainViewPager.offscreenPageLimit = 2
+        val adapter = CategoryFragmentPagerAdapter(supportFragmentManager, viewModel)
 
-        viewPager.adapter = adapter
-        tabLayout.tabMode = TabLayout.MODE_SCROLLABLE
-        tabLayout.setupWithViewPager(viewPager)
-
+        binding.mainViewPager.adapter = adapter
+        binding.mainTabLayout.tabMode = TabLayout.MODE_SCROLLABLE
+        binding.mainTabLayout.setupWithViewPager(binding.mainViewPager)
     }
 }

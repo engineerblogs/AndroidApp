@@ -3,26 +3,28 @@ package e.yoppie.newengineerblogs.view.adapter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import e.yoppie.newengineerblogs.model.data.Category
 import e.yoppie.newengineerblogs.view.fragment.CategoryFragment
+import e.yoppie.newengineerblogs.viewmodel.CompanyViewModel
 
-class CategoryFragmentPagerAdapter(fm: FragmentManager?, items: ArrayList<String>) : FragmentPagerAdapter(fm) {
+class CategoryFragmentPagerAdapter(fm: FragmentManager?, viewModel: CompanyViewModel) : FragmentPagerAdapter(fm) {
 
-    private var items: ArrayList<String>? = null
+    private var categoryList: List<Category>? = null
 
     init {
-        this.items = items
+        this.categoryList = viewModel.categoryList!!.value
     }
 
     override fun getItem(position: Int): Fragment {
-        return CategoryFragment()
+        return CategoryFragment.newInstance(position)
     }
 
     override fun getCount(): Int {
-        return items!!.size
+        return categoryList!!.size
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return items!![position]
+        return categoryList!![position].name
     }
 
 }
