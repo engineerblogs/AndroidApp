@@ -29,7 +29,7 @@
                 android:id="@+id/articleAuthorTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="記事" />
+                android:text="@{article.author}" />
         </LinearLayout>
 
     </android.support.v7.widget.CardView>

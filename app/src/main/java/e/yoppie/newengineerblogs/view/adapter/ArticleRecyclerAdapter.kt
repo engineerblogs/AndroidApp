@@ -22,7 +22,10 @@ class ArticleRecyclerAdapter(private val viewModel: ArticleViewModel) : Recycler
     }
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
-        holder.bind(viewModel.articleList!!.value!![position])
+        holder.binding.apply {
+            setVariable(2, viewModel.articleList!!.value!![position])
+            executePendingBindings()
+        }
     }
 
 }
