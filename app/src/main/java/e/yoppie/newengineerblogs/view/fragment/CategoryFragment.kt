@@ -16,13 +16,26 @@ import e.yoppie.newengineerblogs.viewmodel.CompanyViewModel
 
 class CategoryFragment : Fragment(){
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    private lateinit var articleViewModel: ArticleViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         val position = arguments!!.getInt("position")
         val categoryViewModel = ViewModelProviders.of(activity!!).get(CompanyViewModel::class.java)
         val articleViewModel = ViewModelProviders.of(this).get(position.toString(), ArticleViewModel::class.java)
         articleViewModel.setArticleList(categoryViewModel.categoryList!!.value!![position].articleList)
+        this.articleViewModel = articleViewModel
+    }
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = DataBindingUtil.inflate<CategoryFragmentBinding>(inflater, R.layout.category_fragment, container, false)
+        binding.categoryFragmentSwipeRefreshLayout.setOnRefreshListener {
+            articleViewModel.loadArticles()
+            binding.articleRecyclerView.adapter.notifyDataSetChanged()
+            if (binding.categoryFragmentSwipeRefreshLayout.isRefreshing) {
+                binding.categoryFragmentSwipeRefreshLayout.isRefreshing = false
+            }
+        }
 
         binding.articleRecyclerView.layoutManager = LinearLayoutManager(activity)
         binding.articleRecyclerView.adapter = ArticleRecyclerAdapter(articleViewModel)
