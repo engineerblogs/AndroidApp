@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NewEngineerBlogs</string>
+    <string name="title_activity_article">ArticleActivity</string>
 </resources>

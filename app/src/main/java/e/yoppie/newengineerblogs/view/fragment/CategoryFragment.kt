@@ -1,6 +1,7 @@
 package e.yoppie.newengineerblogs.view.fragment
 
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -10,11 +11,13 @@ import android.view.View
 import android.view.ViewGroup
 import e.yoppie.newengineerblogs.R
 import e.yoppie.newengineerblogs.databinding.CategoryFragmentBinding
+import e.yoppie.newengineerblogs.listener.OnRecyclerListener
+import e.yoppie.newengineerblogs.view.activity.ArticleActivity
 import e.yoppie.newengineerblogs.view.adapter.ArticleRecyclerAdapter
 import e.yoppie.newengineerblogs.viewmodel.ArticleViewModel
 import e.yoppie.newengineerblogs.viewmodel.CompanyViewModel
 
-class CategoryFragment : Fragment(){
+class CategoryFragment : Fragment(), OnRecyclerListener {
 
     private lateinit var articleViewModel: ArticleViewModel
 
@@ -38,7 +41,7 @@ class CategoryFragment : Fragment(){
         }
 
         binding.articleRecyclerView.layoutManager = LinearLayoutManager(activity)
-        binding.articleRecyclerView.adapter = ArticleRecyclerAdapter(articleViewModel)
+        binding.articleRecyclerView.adapter = ArticleRecyclerAdapter(articleViewModel, this)
 
         return binding.root
     }
@@ -53,4 +56,9 @@ class CategoryFragment : Fragment(){
         }
     }
 
+    override fun onRecyclerViewClick(url: String) {
+        val intent = Intent(this.context, ArticleActivity::class.java)
+        intent.putExtra("url", url)
+        startActivity(intent)
+    }
 }

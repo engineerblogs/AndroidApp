@@ -9,11 +9,7 @@ import e.yoppie.newengineerblogs.viewmodel.CompanyViewModel
 
 class CategoryFragmentPagerAdapter(fm: FragmentManager?, viewModel: CompanyViewModel) : FragmentPagerAdapter(fm) {
 
-    private var categoryList: List<Category>? = null
-
-    init {
-        this.categoryList = viewModel.categoryList!!.value
-    }
+    private var categoryList: List<Category>? = viewModel.categoryList.value
 
     override fun getItem(position: Int): Fragment {
         return CategoryFragment.newInstance(position)
