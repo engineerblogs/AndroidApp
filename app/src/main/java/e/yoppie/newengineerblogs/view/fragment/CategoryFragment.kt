@@ -31,7 +31,7 @@ class CategoryFragment : Fragment(){
         val binding = DataBindingUtil.inflate<CategoryFragmentBinding>(inflater, R.layout.category_fragment, container, false)
         binding.categoryFragmentSwipeRefreshLayout.setOnRefreshListener {
             articleViewModel.loadArticles()
-            binding.articleRecyclerView.adapter.notifyDataSetChanged()
+            binding.articleRecyclerView.adapter!!.notifyDataSetChanged()
             if (binding.categoryFragmentSwipeRefreshLayout.isRefreshing) {
                 binding.categoryFragmentSwipeRefreshLayout.isRefreshing = false
             }
