@@ -26,7 +26,7 @@ class CategoryFragment : Fragment(), OnRecyclerListener {
         val position = arguments!!.getInt("position")
         val categoryViewModel = ViewModelProviders.of(activity!!).get(CompanyViewModel::class.java)
         val articleViewModel = ViewModelProviders.of(this).get(position.toString(), ArticleViewModel::class.java)
-        articleViewModel.setArticleList(categoryViewModel.categoryList!!.value!![position].articleList)
+        articleViewModel.setArticleList(categoryViewModel.categoryList.value!![position].articleList)
         this.articleViewModel = articleViewModel
     }
 
