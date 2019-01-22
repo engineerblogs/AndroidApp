@@ -6,9 +6,11 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.jakewharton.rxbinding.support.v7.widget.scrollEvents
 import e.yoppie.newengineerblogs.R
 import e.yoppie.newengineerblogs.databinding.CategoryFragmentBinding
 import e.yoppie.newengineerblogs.listener.OnRecyclerListener
@@ -40,10 +42,24 @@ class CategoryFragment : Fragment(), OnRecyclerListener {
             }
         }
 
-        binding.articleRecyclerView.layoutManager = LinearLayoutManager(activity)
+        val linearLayoutManager = LinearLayoutManager(activity)
+
+        Log.d("yoshiyaDebug1", (linearLayoutManager.itemCount - 1).toString())
+        Log.d("yoshiyaDebug2", linearLayoutManager.findLastVisibleItemPosition().toString())
+
+        binding.articleRecyclerView
+                .scrollEvents()
+                .filter { linearLayoutManager.itemCount - 1 <= linearLayoutManager.findLastVisibleItemPosition() }
+                .subscribe{ loadMore() }
+
+        binding.articleRecyclerView.layoutManager = linearLayoutManager
         binding.articleRecyclerView.adapter = ArticleRecyclerAdapter(articleViewModel, this)
 
         return binding.root
+    }
+
+    private fun loadMore(){
+        Log.d("yoshiyaDebug", "loadMore")
     }
 
     companion object {

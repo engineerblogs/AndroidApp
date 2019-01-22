@@ -39,8 +39,7 @@ dependencies {
 
     // RecyclerView
     implementation "com.android.support:recyclerview-v7:28.0.0"
-    implementation "com.jakewharton.rxbinding3:rxbinding-recyclerview:3.0.0-alpha2"
-    implementation "com.jakewharton.rxbinding:rxbinding-recyclerview-v7-kotlin:0.2.0"
+    implementation "com.jakewharton.rxbinding:rxbinding-recyclerview-v7-kotlin:1.0.1"
 
     // CardView
     implementation "com.android.support:cardview-v7:28.0.0"
