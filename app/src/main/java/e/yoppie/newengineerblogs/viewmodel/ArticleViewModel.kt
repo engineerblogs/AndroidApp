@@ -26,7 +26,17 @@ class ArticleViewModel : ViewModel() {
                 Article(17, "たいとる17", "執筆者17", "https://developers.gnavi.co.jp/entry/slim-framework/"),
                 Article(18, "たいとる18", "執筆者18", "https://developers.gnavi.co.jp/entry/slim-framework/"),
                 Article(19, "たいとる19", "執筆者19", "https://developers.gnavi.co.jp/entry/slim-framework/"),
-                Article(20, "たいとる20", "執筆者20", "https://developers.gnavi.co.jp/entry/slim-framework/")
+                Article(20, "たいとる20", "執筆者20", "https://developers.gnavi.co.jp/entry/slim-framework/"),
+                Article(21, "たいとる21", "執筆者21", "https://developers.gnavi.co.jp/entry/slim-framework/"),
+                Article(22, "たいとる22", "執筆者22", "https://developers.gnavi.co.jp/entry/slim-framework/"),
+                Article(23, "たいとる23", "執筆者23", "https://developers.gnavi.co.jp/entry/slim-framework/"),
+                Article(24, "たいとる24", "執筆者24", "https://developers.gnavi.co.jp/entry/slim-framework/"),
+                Article(25, "たいとる25", "執筆者25", "https://developers.gnavi.co.jp/entry/slim-framework/"),
+                Article(26, "たいとる26", "執筆者26", "https://developers.gnavi.co.jp/entry/slim-framework/"),
+                Article(27, "たいとる27", "執筆者27", "https://developers.gnavi.co.jp/entry/slim-framework/"),
+                Article(28, "たいとる28", "執筆者28", "https://developers.gnavi.co.jp/entry/slim-framework/"),
+                Article(29, "たいとる29", "執筆者29", "https://developers.gnavi.co.jp/entry/slim-framework/"),
+                Article(30, "たいとる30", "執筆者30", "https://developers.gnavi.co.jp/entry/slim-framework/")
         )
         setArticleList(articles)
     }

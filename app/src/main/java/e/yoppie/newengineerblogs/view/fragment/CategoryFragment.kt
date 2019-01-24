@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.jakewharton.rxbinding.support.v7.widget.RxRecyclerView
 import com.jakewharton.rxbinding.support.v7.widget.scrollEvents
 import e.yoppie.newengineerblogs.R
 import e.yoppie.newengineerblogs.databinding.CategoryFragmentBinding
@@ -44,16 +45,13 @@ class CategoryFragment : Fragment(), OnRecyclerListener {
 
         val linearLayoutManager = LinearLayoutManager(activity)
 
-        Log.d("yoshiyaDebug1", (linearLayoutManager.itemCount - 1).toString())
-        Log.d("yoshiyaDebug2", linearLayoutManager.findLastVisibleItemPosition().toString())
+        binding.articleRecyclerView.layoutManager = linearLayoutManager
+        binding.articleRecyclerView.adapter = ArticleRecyclerAdapter(articleViewModel, this)
 
         binding.articleRecyclerView
                 .scrollEvents()
                 .filter { linearLayoutManager.itemCount - 1 <= linearLayoutManager.findLastVisibleItemPosition() }
                 .subscribe{ loadMore() }
-
-        binding.articleRecyclerView.layoutManager = linearLayoutManager
-        binding.articleRecyclerView.adapter = ArticleRecyclerAdapter(articleViewModel, this)
 
         return binding.root
     }
