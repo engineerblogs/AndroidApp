@@ -6,16 +6,18 @@ import android.util.Log
 import e.yoppie.newengineerblogs.model.data.Article
 
 class ArticleViewModel : ViewModel() {
-    lateinit var articleList: MutableLiveData<List<Article>>
+    lateinit var articleListLiveData: MutableLiveData<MutableList<Article>>
+    private var articleList: MutableList<Article> = mutableListOf()
 
-    fun setArticleList(articleList: List<Article>) {
-        val mutableLiveData = MutableLiveData<List<Article>>()
+    fun set(articleList: MutableList<Article>) {
+        val mutableLiveData = MutableLiveData<MutableList<Article>>()
         mutableLiveData.value = articleList
-        this.articleList = mutableLiveData
+        this.articleList = articleList
+        this.articleListLiveData = mutableLiveData
     }
 
     fun loadArticles() {
-        val articles = listOf(
+        val articleList = mutableListOf(
                 Article(11, "たいとる11", "執筆者11", "https://developers.gnavi.co.jp/entry/slim-framework/"),
                 Article(12, "たいとる12", "執筆者12", "https://developers.gnavi.co.jp/entry/slim-framework/"),
                 Article(13, "たいとる13", "執筆者13", "https://developers.gnavi.co.jp/entry/slim-framework/"),
@@ -37,10 +39,16 @@ class ArticleViewModel : ViewModel() {
                 Article(29, "たいとる29", "執筆者29", "https://developers.gnavi.co.jp/entry/slim-framework/"),
                 Article(30, "たいとる30", "執筆者30", "https://developers.gnavi.co.jp/entry/slim-framework/")
         )
-        this.articleList.postValue(articles)
+        this.articleList = articleList
+        this.articleListLiveData.postValue(articleList)
     }
 
     fun loadMore() {
-        Log.d("yoshiyaDebug", "loadMore")
+        val article = Article(31, "たいとる31", "執筆者31", "https://developers.gnavi.co.jp/entry/slim-framework/")
+        if(this.articleList.last().id != article.id){
+            Log.d("yoshiyaDebug", "last")
+            this.articleList.add(article)
+            this.articleListLiveData.postValue(this.articleList)
+        }
     }
 }

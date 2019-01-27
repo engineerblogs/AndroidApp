@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         val viewModel = ViewModelProviders.of(this).get(CompanyViewModel::class.java)
         binding.viewModel = viewModel
 
-        binding.mainViewPager.offscreenPageLimit = 2
+        binding.mainViewPager.offscreenPageLimit = 5
         val adapter = CategoryFragmentPagerAdapter(supportFragmentManager, viewModel)
 
         binding.mainViewPager.adapter = adapter

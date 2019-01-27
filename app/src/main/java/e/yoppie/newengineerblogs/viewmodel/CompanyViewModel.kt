@@ -14,7 +14,7 @@ class CompanyViewModel : ViewModel() {
     }
 
     private fun loadAllCategoryArticles(): MutableLiveData<List<Category>> {
-        val articles = listOf(
+        val articles = mutableListOf(
                 Article(1, "たいとる1", "執筆者1", "https://developers.gnavi.co.jp/entry/slim-framework/"),
                 Article(2, "たいとる2", "執筆者2", "https://developers.gnavi.co.jp/entry/slim-framework/"),
                 Article(3, "たいとる3", "執筆者3", "https://developers.gnavi.co.jp/entry/slim-framework/"),

@@ -5,7 +5,6 @@ import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -28,16 +27,15 @@ class CategoryFragment : Fragment(), OnRecyclerListener {
         val position = arguments!!.getInt("position")
         val categoryViewModel = ViewModelProviders.of(activity!!).get(CompanyViewModel::class.java)
         val articleViewModel = ViewModelProviders.of(this).get(position.toString(), ArticleViewModel::class.java)
-        articleViewModel.setArticleList(categoryViewModel.categoryList.value!![position].articleList)
+        articleViewModel.set(categoryViewModel.categoryList.value!![position].articleList)
         this.articleViewModel = articleViewModel
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var binding = DataBindingUtil.inflate<CategoryFragmentBinding>(inflater, R.layout.category_fragment, container, false)
-        binding.setLifecycleOwner(this.activity as AppCompatActivity)
+        binding.setLifecycleOwner(this)
         binding.categoryFragmentSwipeRefreshLayout.setOnRefreshListener {
             articleViewModel.loadArticles()
-            binding.articleRecyclerView.adapter!!.notifyDataSetChanged()
             if (binding.categoryFragmentSwipeRefreshLayout.isRefreshing) {
                 binding.categoryFragmentSwipeRefreshLayout.isRefreshing = false
             }
@@ -49,7 +47,7 @@ class CategoryFragment : Fragment(), OnRecyclerListener {
     private fun setArticleRecyclerView(binding: CategoryFragmentBinding): CategoryFragmentBinding? {
         val linearLayoutManager = LinearLayoutManager(activity)
         binding.articleRecyclerView.layoutManager = linearLayoutManager
-        binding.articleRecyclerView.adapter = ArticleRecyclerAdapter(this.activity as AppCompatActivity, articleViewModel, this)
+        binding.articleRecyclerView.adapter = ArticleRecyclerAdapter(this, articleViewModel, this)
         binding.articleRecyclerView
                 .scrollEvents()
                 .filter { linearLayoutManager.itemCount - 1 <= linearLayoutManager.findLastVisibleItemPosition() }

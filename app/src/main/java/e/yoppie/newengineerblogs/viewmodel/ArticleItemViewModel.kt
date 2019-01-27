@@ -1,6 +1,5 @@
 package e.yoppie.newengineerblogs.viewmodel
 
-import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import e.yoppie.newengineerblogs.model.data.Article
@@ -18,9 +17,7 @@ class ArticleItemViewModel : ViewModel(){
         }
     }
 
-    fun setArticle(bookmark: Article) {
-        item.postValue(bookmark)
+    fun setArticle(article: Article) {
+        item.postValue(article)
     }
-
-    fun article() = item as LiveData<Article>
 }
