@@ -2,8 +2,7 @@ package e.yoppie.newengineerblogs.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import androidx.navigation.NavController
-import e.yoppie.newengineerblogs.R
+import android.util.Log
 import e.yoppie.newengineerblogs.model.data.Article
 
 class ArticleViewModel : ViewModel() {
@@ -38,6 +37,10 @@ class ArticleViewModel : ViewModel() {
                 Article(29, "たいとる29", "執筆者29", "https://developers.gnavi.co.jp/entry/slim-framework/"),
                 Article(30, "たいとる30", "執筆者30", "https://developers.gnavi.co.jp/entry/slim-framework/")
         )
-        setArticleList(articles)
+        this.articleList.postValue(articles)
+    }
+
+    fun loadMore() {
+        Log.d("yoshiyaDebug", "loadMore")
     }
 }

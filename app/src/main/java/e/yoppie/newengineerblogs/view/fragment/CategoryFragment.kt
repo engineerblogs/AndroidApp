@@ -5,12 +5,11 @@ import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.jakewharton.rxbinding.support.v7.widget.RxRecyclerView
 import com.jakewharton.rxbinding.support.v7.widget.scrollEvents
 import e.yoppie.newengineerblogs.R
 import e.yoppie.newengineerblogs.databinding.CategoryFragmentBinding
@@ -34,7 +33,8 @@ class CategoryFragment : Fragment(), OnRecyclerListener {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val binding = DataBindingUtil.inflate<CategoryFragmentBinding>(inflater, R.layout.category_fragment, container, false)
+        var binding = DataBindingUtil.inflate<CategoryFragmentBinding>(inflater, R.layout.category_fragment, container, false)
+        binding.setLifecycleOwner(this.activity as AppCompatActivity)
         binding.categoryFragmentSwipeRefreshLayout.setOnRefreshListener {
             articleViewModel.loadArticles()
             binding.articleRecyclerView.adapter!!.notifyDataSetChanged()
@@ -42,22 +42,20 @@ class CategoryFragment : Fragment(), OnRecyclerListener {
                 binding.categoryFragmentSwipeRefreshLayout.isRefreshing = false
             }
         }
-
-        val linearLayoutManager = LinearLayoutManager(activity)
-
-        binding.articleRecyclerView.layoutManager = linearLayoutManager
-        binding.articleRecyclerView.adapter = ArticleRecyclerAdapter(articleViewModel, this)
-
-        binding.articleRecyclerView
-                .scrollEvents()
-                .filter { linearLayoutManager.itemCount - 1 <= linearLayoutManager.findLastVisibleItemPosition() }
-                .subscribe{ loadMore() }
-
+        binding = setArticleRecyclerView(binding)
         return binding.root
     }
 
-    private fun loadMore(){
-        Log.d("yoshiyaDebug", "loadMore")
+    private fun setArticleRecyclerView(binding: CategoryFragmentBinding): CategoryFragmentBinding? {
+        val linearLayoutManager = LinearLayoutManager(activity)
+        binding.articleRecyclerView.layoutManager = linearLayoutManager
+        binding.articleRecyclerView.adapter = ArticleRecyclerAdapter(this.activity as AppCompatActivity, articleViewModel, this)
+        binding.articleRecyclerView
+                .scrollEvents()
+                .filter { linearLayoutManager.itemCount - 1 <= linearLayoutManager.findLastVisibleItemPosition() }
+                .subscribe{ articleViewModel.loadMore() }
+
+        return binding
     }
 
     companion object {

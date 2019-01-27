@@ -4,8 +4,8 @@
     <data>
 
         <variable
-            name="article"
-            type="e.yoppie.newengineerblogs.model.data.Article" />
+            name="viewModel"
+            type="e.yoppie.newengineerblogs.viewmodel.ArticleItemViewModel" />
     </data>
 
     <android.support.v7.widget.CardView
@@ -23,13 +23,13 @@
                 android:id="@+id/articleTitleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{article.title}" />
+                android:text="@{viewModel.title}" />
 
             <TextView
                 android:id="@+id/articleAuthorTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{article.author}" />
+                android:text="@{viewModel.author}" />
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
