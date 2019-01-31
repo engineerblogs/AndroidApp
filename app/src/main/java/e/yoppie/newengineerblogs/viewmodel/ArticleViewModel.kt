@@ -46,7 +46,6 @@ class ArticleViewModel : ViewModel() {
     fun loadMore() {
         val article = Article(31, "たいとる31", "執筆者31", "https://developers.gnavi.co.jp/entry/slim-framework/")
         if(this.articleList.last().id != article.id){
-            Log.d("yoshiyaDebug", "last")
             this.articleList.add(article)
             this.articleListLiveData.postValue(this.articleList)
         }

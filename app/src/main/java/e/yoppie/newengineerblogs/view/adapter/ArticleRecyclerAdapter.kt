@@ -15,16 +15,10 @@ import e.yoppie.newengineerblogs.viewmodel.ArticleItemViewModel
 import e.yoppie.newengineerblogs.viewmodel.ArticleViewModel
 
 class ArticleRecyclerAdapter(private val context: Fragment, viewModel: ArticleViewModel, private var onRecyclerListener: OnRecyclerListener) : RecyclerView.Adapter<ArticleViewHolder>() {
-    private lateinit var recyclerView: RecyclerView
     private var items: MutableList<Article> = mutableListOf()
 
     init {
         viewModel.articleListLiveData.observe({ context.lifecycle }, { it?.apply { update(this) } })
-    }
-
-    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
-        super.onAttachedToRecyclerView(recyclerView)
-        this.recyclerView = recyclerView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {

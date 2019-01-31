@@ -10,16 +10,16 @@
         android:name="e.yoppie.newengineerblogs.view.fragment.CategoryFragment"
         android:label="categoryFragment"
         tools:layout="@layout/category_fragment" >
-        <action
-            android:id="@+id/actionCategoryToArticle"
-            app:destination="@id/articleFragment" />
+        <!--<action-->
+            <!--android:id="@+id/actionCategoryToArticle"-->
+            <!--app:destination="@id/articleFragment" />-->
     </fragment>
 
-    <fragment
-        android:id="@+id/articleFragment"
-        android:name="e.yoppie.newengineerblogs.view.fragment.HogeFragment"
-        android:label="articleFragment"
-        tools:layout="@layout/hoge" >
-    </fragment>
+    <!--<fragment-->
+        <!--android:id="@+id/articleFragment"-->
+        <!--android:name="e.yoppie.newengineerblogs.view.fragment.HogeFragment"-->
+        <!--android:label="articleFragment"-->
+        <!--tools:layout="@layout/hoge" >-->
+    <!--</fragment>-->
 
 </navigation>
