@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 28
     dataBinding {
@@ -60,6 +62,7 @@ dependencies {
     // Dagger
     implementation 'com.google.dagger:dagger:2.21'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.21'
+    kapt                "com.google.dagger:dagger-compiler:2.21"
 
 }
 repositories {

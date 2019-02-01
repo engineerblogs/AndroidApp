@@ -2,18 +2,21 @@ package e.yoppie.newengineerblogs.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import android.util.Log
+import e.yoppie.newengineerblogs.di.diInterface.DaggerArticleViewModelComponent
+import e.yoppie.newengineerblogs.di.diModule.ArticleViewModelModule
 import e.yoppie.newengineerblogs.model.data.Article
+import javax.inject.Inject
 
 class ArticleViewModel : ViewModel() {
-    lateinit var articleListLiveData: MutableLiveData<MutableList<Article>>
-    private var articleList: MutableList<Article> = mutableListOf()
+    @Inject lateinit var articleListLiveData: MutableLiveData<MutableList<Article>>
+    @Inject lateinit var articleList: MutableList<Article>
 
     fun set(articleList: MutableList<Article>) {
-        val mutableLiveData = MutableLiveData<MutableList<Article>>()
-        mutableLiveData.value = articleList
-        this.articleList = articleList
-        this.articleListLiveData = mutableLiveData
+        val articleViewModelComponent = DaggerArticleViewModelComponent
+                .builder()
+                .articleViewModelModule(ArticleViewModelModule(articleList))
+                .build()
+        articleViewModelComponent.inject(this)
     }
 
     fun loadArticles() {
