@@ -7,16 +7,11 @@ import e.yoppie.newengineerblogs.model.data.Article
 import javax.inject.Singleton
 
 @Module
-class ArticleViewModelModule(articleList: MutableList<Article>) {
-    private var articleList: MutableList<Article> = mutableListOf()
-
-    init {
-        this.articleList = articleList
-    }
+class ArticleViewModelModule(private val articleList: MutableList<Article>) {
 
     @Provides
     @Singleton
-    fun provideArticleListLiveData(): MutableLiveData<MutableList<Article>>{
+    fun provideArticleListLiveData(): MutableLiveData<MutableList<Article>> {
         val mutableLiveData = MutableLiveData<MutableList<Article>>()
         mutableLiveData.value = articleList
         return mutableLiveData
@@ -24,7 +19,7 @@ class ArticleViewModelModule(articleList: MutableList<Article>) {
 
     @Provides
     @Singleton
-    fun provideArticleList(): MutableList<Article>{
+    fun provideArticleList(): MutableList<Article> {
         return articleList
     }
 }

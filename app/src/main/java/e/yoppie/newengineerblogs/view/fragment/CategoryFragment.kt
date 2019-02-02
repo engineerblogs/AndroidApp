@@ -51,7 +51,7 @@ class CategoryFragment : Fragment(), OnRecyclerListener {
         binding.articleRecyclerView
                 .scrollEvents()
                 .filter { linearLayoutManager.itemCount - 1 <= linearLayoutManager.findLastVisibleItemPosition() }
-                .subscribe{ articleViewModel.loadMore() }
+                .subscribe { articleViewModel.loadMore() }
 
         return binding
     }

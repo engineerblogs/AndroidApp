@@ -3,23 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/categoryFragment">
+    app:startDestination="@id/categoryFagment">
 
     <fragment
-        android:id="@+id/categoryFragment"
+        android:id="@+id/categoryFagment"
         android:name="e.yoppie.newengineerblogs.view.fragment.CategoryFragment"
-        android:label="categoryFragment"
+        android:label="categoryFagment"
         tools:layout="@layout/category_fragment" >
-        <!--<action-->
-            <!--android:id="@+id/actionCategoryToArticle"-->
-            <!--app:destination="@id/articleFragment" />-->
     </fragment>
-
-    <!--<fragment-->
-        <!--android:id="@+id/articleFragment"-->
-        <!--android:name="e.yoppie.newengineerblogs.view.fragment.HogeFragment"-->
-        <!--android:label="articleFragment"-->
-        <!--tools:layout="@layout/hoge" >-->
-    <!--</fragment>-->
 
 </navigation>

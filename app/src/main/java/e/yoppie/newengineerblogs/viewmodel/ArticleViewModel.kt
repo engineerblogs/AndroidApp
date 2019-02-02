@@ -8,8 +8,10 @@ import e.yoppie.newengineerblogs.model.data.Article
 import javax.inject.Inject
 
 class ArticleViewModel : ViewModel() {
-    @Inject lateinit var articleListLiveData: MutableLiveData<MutableList<Article>>
-    @Inject lateinit var articleList: MutableList<Article>
+    @Inject
+    lateinit var articleListLiveData: MutableLiveData<MutableList<Article>>
+    @Inject
+    lateinit var articleList: MutableList<Article>
 
     fun set(articleList: MutableList<Article>) {
         val articleViewModelComponent = DaggerArticleViewModelComponent
@@ -48,7 +50,7 @@ class ArticleViewModel : ViewModel() {
 
     fun loadMore() {
         val article = Article(31, "たいとる31", "執筆者31", "https://developers.gnavi.co.jp/entry/slim-framework/")
-        if(this.articleList.last().id != article.id){
+        if (this.articleList.last().id != article.id) {
             this.articleList.add(article)
             this.articleListLiveData.postValue(this.articleList)
         }

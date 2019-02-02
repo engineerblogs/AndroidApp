@@ -28,13 +28,13 @@ class CompanyViewModel : ViewModel() {
         )
         val mutableLiveData = MutableLiveData<List<Category>>()
         mutableLiveData.value = listOf(
-                Category(1, "かてごりー1", articles),
-                Category(2, "かてごりー2", articles),
-                Category(3, "かてごりー3", articles),
-                Category(4, "かてごりー4", articles),
-                Category(5, "かてごりー5", articles),
-                Category(6, "かてごりー6", articles),
-                Category(7, "かてごりー7", articles)
+//                Category(1, "かてごりー1", articles),
+//                Category(2, "かてごりー2", articles),
+//                Category(3, "かてごりー3", articles),
+//                Category(4, "かてごりー4", articles),
+//                Category(5, "かてごりー5", articles),
+//                Category(6, "かてごりー6", articles),
+//                Category(7, "かてごりー7", articles)
         )
 
         return mutableLiveData

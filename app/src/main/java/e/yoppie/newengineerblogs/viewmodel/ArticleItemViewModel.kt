@@ -4,9 +4,9 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import e.yoppie.newengineerblogs.model.data.Article
 
-class ArticleItemViewModel : ViewModel(){
+class ArticleItemViewModel : ViewModel() {
     val title = MutableLiveData<String>()
-    val author =  MutableLiveData<String>()
+    val author = MutableLiveData<String>()
 
     private val item = MutableLiveData<Article>().apply {
         this.observeForever {

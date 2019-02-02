@@ -49,7 +49,7 @@ class ArticleRecyclerAdapter(private val context: Fragment, viewModel: ArticleVi
         this.items.addAll(articleList)
     }
 
-    class DiffCallback(private val oldList: MutableList<Article>, private val newList: MutableList<Article>): DiffUtil.Callback(){
+    class DiffCallback(private val oldList: MutableList<Article>, private val newList: MutableList<Article>) : DiffUtil.Callback() {
         override fun areContentsTheSame(oldPosition: Int, newPosition: Int) = oldList[oldPosition] == (newList[newPosition])
 
         override fun areItemsTheSame(oldPosition: Int, newPosition: Int) = oldList[oldPosition].id == (newList[newPosition]).id

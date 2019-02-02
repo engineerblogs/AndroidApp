@@ -1,6 +1,7 @@
 package e.yoppie.newengineerblogs.view.activity
 
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -17,13 +18,21 @@ class MainActivity : AppCompatActivity() {
 
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         val viewModel = ViewModelProviders.of(this).get(CompanyViewModel::class.java)
-        binding.viewModel = viewModel
+        if (viewModel.categoryList.value!!.isEmpty()) {
+            showSelectCompany()
+        }
 
+        binding.viewModel = viewModel
         binding.mainViewPager.offscreenPageLimit = 5
         val adapter = CategoryFragmentPagerAdapter(supportFragmentManager, viewModel)
 
         binding.mainViewPager.adapter = adapter
         binding.mainTabLayout.tabMode = TabLayout.MODE_SCROLLABLE
         binding.mainTabLayout.setupWithViewPager(binding.mainViewPager)
+    }
+
+    private fun showSelectCompany() {
+        val intent = Intent(this, SelectCompanyActivity::class.java)
+        startActivity(intent)
     }
 }
