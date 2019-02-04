@@ -12,15 +12,15 @@ class SelectCompanyViewModel : ViewModel() {
     init {
         val mutableLiveData = MutableLiveData<MutableList<Company>>()
         val companyList = mutableListOf(
-                Company(1, "ぐるなび", "http://fanblogs.jp/nogizakafan/file/E799BDE79FB3E9BABBE8A1A32CE883B82CE3818AE381A3E381AFE3829AE381842CE794BBE5838F2CE381BEE38184E38284E382932CE4B983E69CA8E59D82462CE5B9B4E5A5B32C5E4BD8D.jpg"),
-                Company(2, "ぐるなび", "http://fanblogs.jp/nogizakafan/file/E799BDE79FB3E9BABBE8A1A32CE883B82CE3818AE381A3E381AFE3829AE381842CE794BBE5838F2CE381BEE38184E38284E382932CE4B983E69CA8E59D82462CE5B9B4E5A5B32C5E4BD8D.jpg"),
-                Company(3, "ぐるなび", "http://fanblogs.jp/nogizakafan/file/E799BDE79FB3E9BABBE8A1A32CE883B82CE3818AE381A3E381AFE3829AE381842CE794BBE5838F2CE381BEE38184E38284E382932CE4B983E69CA8E59D82462CE5B9B4E5A5B32C5E4BD8D.jpg"),
-                Company(4, "ぐるなび", "http://fanblogs.jp/nogizakafan/file/E799BDE79FB3E9BABBE8A1A32CE883B82CE3818AE381A3E381AFE3829AE381842CE794BBE5838F2CE381BEE38184E38284E382932CE4B983E69CA8E59D82462CE5B9B4E5A5B32C5E4BD8D.jpg"),
-                Company(5, "ぐるなび", "http://fanblogs.jp/nogizakafan/file/E799BDE79FB3E9BABBE8A1A32CE883B82CE3818AE381A3E381AFE3829AE381842CE794BBE5838F2CE381BEE38184E38284E382932CE4B983E69CA8E59D82462CE5B9B4E5A5B32C5E4BD8D.jpg"),
-                Company(6, "ぐるなび", "http://fanblogs.jp/nogizakafan/file/E799BDE79FB3E9BABBE8A1A32CE883B82CE3818AE381A3E381AFE3829AE381842CE794BBE5838F2CE381BEE38184E38284E382932CE4B983E69CA8E59D82462CE5B9B4E5A5B32C5E4BD8D.jpg"),
-                Company(7, "ぐるなび", "http://fanblogs.jp/nogizakafan/file/E799BDE79FB3E9BABBE8A1A32CE883B82CE3818AE381A3E381AFE3829AE381842CE794BBE5838F2CE381BEE38184E38284E382932CE4B983E69CA8E59D82462CE5B9B4E5A5B32C5E4BD8D.jpg"),
-                Company(8, "ぐるなび", "http://fanblogs.jp/nogizakafan/file/E799BDE79FB3E9BABBE8A1A32CE883B82CE3818AE381A3E381AFE3829AE381842CE794BBE5838F2CE381BEE38184E38284E382932CE4B983E69CA8E59D82462CE5B9B4E5A5B32C5E4BD8D.jpg"),
-                Company(9, "ぐるなび", "http://fanblogs.jp/nogizakafan/file/E799BDE79FB3E9BABBE8A1A32CE883B82CE3818AE381A3E381AFE3829AE381842CE794BBE5838F2CE381BEE38184E38284E382932CE4B983E69CA8E59D82462CE5B9B4E5A5B32C5E4BD8D.jpg")
+                Company(1, "ぐるなび", "https://images-na.ssl-images-amazon.com/images/I/61DAfypzYnL._SY445_.jpg"),
+                Company(2, "ぐるなび", "https://images-na.ssl-images-amazon.com/images/I/61DAfypzYnL._SY445_.jpg"),
+                Company(3, "ぐるなび", "https://images-na.ssl-images-amazon.com/images/I/61DAfypzYnL._SY445_.jpg"),
+                Company(4, "ぐるなび", "https://images-na.ssl-images-amazon.com/images/I/61DAfypzYnL._SY445_.jpg"),
+                Company(5, "ぐるなび", "https://images-na.ssl-images-amazon.com/images/I/61DAfypzYnL._SY445_.jpg"),
+                Company(6, "ぐるなび", "https://images-na.ssl-images-amazon.com/images/I/61DAfypzYnL._SY445_.jpg"),
+                Company(7, "ぐるなび", "https://images-na.ssl-images-amazon.com/images/I/61DAfypzYnL._SY445_.jpg"),
+                Company(8, "ぐるなび", "https://images-na.ssl-images-amazon.com/images/I/61DAfypzYnL._SY445_.jpg"),
+                Company(9, "ぐるなび", "https://images-na.ssl-images-amazon.com/images/I/61DAfypzYnL._SY445_.jpg")
         )
         mutableLiveData.value = companyList
         this.companyList = companyList
@@ -28,7 +28,7 @@ class SelectCompanyViewModel : ViewModel() {
     }
 
     fun loadMore() {
-        val company = Company(10, "ぐるなび", "url")
+        val company = Company(10, "ぐるなび", "https://images-na.ssl-images-amazon.com/images/I/61DAfypzYnL._SY445_.jpg")
         if (this.companyList.last().id != company.id) {
             this.companyList.add(company)
             this.companyListData.postValue(this.companyList)
