@@ -4,6 +4,7 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import e.yoppie.newengineerblogs.model.data.Article
 import e.yoppie.newengineerblogs.model.data.Category
+import e.yoppie.newengineerblogs.repository.ArticleRepository
 
 class CompanyViewModel : ViewModel() {
 
@@ -14,6 +15,9 @@ class CompanyViewModel : ViewModel() {
     }
 
     private fun loadAllCategoryArticles(): MutableLiveData<List<Category>> {
+
+        val articleRepository = ArticleRepository("url")
+
         val articles = mutableListOf(
                 Article(1, "たいとる1", "執筆者1", "https://developers.gnavi.co.jp/entry/slim-framework/"),
                 Article(2, "たいとる2", "執筆者2", "https://developers.gnavi.co.jp/entry/slim-framework/"),
@@ -41,4 +45,6 @@ class CompanyViewModel : ViewModel() {
 
         // todo: modelLayerから取得する処理に修正せよ
     }
+
+
 }
