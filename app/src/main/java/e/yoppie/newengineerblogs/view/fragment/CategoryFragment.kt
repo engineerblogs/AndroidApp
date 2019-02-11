@@ -33,7 +33,7 @@ class CategoryFragment : Fragment(), OnRecyclerListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var binding = DataBindingUtil.inflate<CategoryFragmentBinding>(inflater, R.layout.category_fragment, container, false)
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = this
         binding.categoryFragmentSwipeRefreshLayout.setOnRefreshListener {
             articleViewModel.loadArticles()
             if (binding.categoryFragmentSwipeRefreshLayout.isRefreshing) {

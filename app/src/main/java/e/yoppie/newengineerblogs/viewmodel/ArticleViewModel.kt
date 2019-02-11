@@ -10,6 +10,7 @@ import javax.inject.Inject
 class ArticleViewModel : ViewModel() {
     @Inject
     lateinit var articleListLiveData: MutableLiveData<MutableList<Article>>
+
     @Inject
     lateinit var articleList: MutableList<Article>
 
