@@ -6,13 +6,13 @@ import e.yoppie.newengineerblogs.model.data.Company
 
 class SelectCompanyItemViewModel : ViewModel() {
     val name = MutableLiveData<String>()
-    val imageUrl = MutableLiveData<String>()
+    val img = MutableLiveData<String>()
 
     private val item = MutableLiveData<Company>().apply {
         this.observeForever {
             it?.apply {
                 this@SelectCompanyItemViewModel.name.postValue(this.name)
-                this@SelectCompanyItemViewModel.imageUrl.postValue(this.imageUrl)
+                this@SelectCompanyItemViewModel.img.postValue(this.img)
             }
         }
     }

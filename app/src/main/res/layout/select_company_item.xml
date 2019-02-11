@@ -19,7 +19,7 @@
             android:id="@+id/companyImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:imageUrl="@{viewModel.imageUrl}" />
+            app:imageUrl="@{viewModel.img}" />
 
     </LinearLayout>
 

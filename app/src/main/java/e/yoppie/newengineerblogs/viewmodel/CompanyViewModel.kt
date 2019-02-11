@@ -16,7 +16,8 @@ class CompanyViewModel : ViewModel() {
 
     private fun loadAllCategoryArticles(): MutableLiveData<List<Category>> {
 
-        val articleRepository = ArticleRepository("url")
+        val articleRepository = ArticleRepository("https://9hqe5z0uw7.execute-api.ap-northeast-1.amazonaws.com")
+        articleRepository.test()
 
         val articles = mutableListOf(
                 Article(1, "たいとる1", "執筆者1", "https://developers.gnavi.co.jp/entry/slim-framework/"),
