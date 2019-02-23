@@ -32,12 +32,6 @@ android {
     }
 }
 
-kotlin {
-    experimental {
-        coroutines 'enable'
-    }
-}
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:multidex:1.0.3'
