@@ -1,5 +1,6 @@
 package e.yoppie.newengineerblogs.repository
 
+import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.experimental.CoroutineCallAdapterFactory
 import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
@@ -7,6 +8,7 @@ import e.yoppie.newengineerblogs.model.data.Company
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
@@ -19,10 +21,14 @@ class ArticleRepository(url: String) {
                 .add(KotlinJsonAdapterFactory())
                 .build()
 
+        val gson = GsonBuilder()
+                .serializeNulls()
+                .create()
+
         this.retrofit = Retrofit.Builder()
                 .baseUrl(url)
-                .addConverterFactory(MoshiConverterFactory.create(moshi))
-                .addCallAdapterFactory(CoroutineCallAdapterFactory())
+                .addConverterFactory(GsonConverterFactory.create(gson))
+//                .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .client(getClient())
                 .build()
     }
