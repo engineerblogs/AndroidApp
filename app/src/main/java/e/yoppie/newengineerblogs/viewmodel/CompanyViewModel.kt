@@ -46,13 +46,20 @@ class CompanyViewModel : ViewModel() {
         // todo: modelLayerから取得する処理に修正せよ
     }
 
-    private suspend fun loadTest(){
+    private fun loadTest(){
         try{
             val articleRepository = ArticleRepository("https://9hqe5z0uw7.execute-api.ap-northeast-1.amazonaws.com")
-            val name = articleRepository.test()[0].name
-            Log.d("yoshiya_debug", name)
+            val response = articleRepository.test()
+
+            if(response.isSuccessful){
+                Log.d("yoshiya_debug", response.body()!![0].name)
+            }else{
+                Log.d("yoshiya_debug", "miss")
+            }
+//            val name = articleRepository.test()[0].name
+//            Log.d("yoshiya_debug", name)
         }catch (t: Throwable){
-            Log.d("yoshiya_debug", "きてない")
+            Log.d("yoshiya_debug", "きゃっち")
         }
     }
 
