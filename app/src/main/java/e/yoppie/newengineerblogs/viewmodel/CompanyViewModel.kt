@@ -54,7 +54,6 @@ class CompanyViewModel : ViewModel() {
             if(response.isSuccessful){
                 Log.d("yoshiya_debug", response.body()!![0].name)
             }else{
-                Log.d("yoshiya_debug", "miss")
             }
 //            val name = articleRepository.test()[0].name
 //            Log.d("yoshiya_debug", name)
