@@ -49,16 +49,15 @@ class CompanyViewModel : ViewModel() {
     private fun loadTest(){
         try{
             val articleRepository = ArticleRepository("https://9hqe5z0uw7.execute-api.ap-northeast-1.amazonaws.com")
-            val response = articleRepository.test()
+            val response = articleRepository.getCompanies()
 
             if(response.isSuccessful){
-                Log.d("yoshiya_debug", response.body()!![0].name)
+                Log.d("yoshiya_debug", response.body()!!.companies[0].name)
             }else{
+                Log.d("yoshiya_debug", "miss")
             }
-//            val name = articleRepository.test()[0].name
-//            Log.d("yoshiya_debug", name)
         }catch (t: Throwable){
-            Log.d("yoshiya_debug", "きゃっち")
+            Log.d("yoshiya_debug", t.message)
         }
     }
 
