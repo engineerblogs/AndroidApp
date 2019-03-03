@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         val viewModel = ViewModelProviders.of(this).get(CompanyViewModel::class.java)
-        if (viewModel.categoryList.value!!.isEmpty()) {
+        if (!viewModel.categoryList.value!!.isEmpty()) {
             showSelectCompany()
         }
 
