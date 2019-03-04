@@ -3,10 +3,12 @@ package e.yoppie.newengineerblogs.viewmodel
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.util.Log
+import e.yoppie.newengineerblogs.model.data.Companies
 import e.yoppie.newengineerblogs.model.data.Company
 import e.yoppie.newengineerblogs.repository.CompanyRepository
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SelectCompanyViewModel : ViewModel() {
     var companyListData: MutableLiveData<MutableList<Company>>
@@ -31,21 +33,28 @@ class SelectCompanyViewModel : ViewModel() {
     }
 
     fun load() {
-        GlobalScope.launch {
-            try {
-                val companyRepository = CompanyRepository("https://9hqe5z0uw7.execute-api.ap-northeast-1.amazonaws.com")
-                val response = companyRepository.getCompanies()
-                if (response.isSuccessful) {
-                    val mutableLiveData = MutableLiveData<MutableList<Company>>()
-                    val newCompanyList = response.body()!!.companies
-                    Log.d("yoshiya_debug", newCompanyList[0].name)
-                    mutableLiveData.value = newCompanyList
-                    companyList = newCompanyList
-                    companyListData = mutableLiveData
+        try {
+            val companyRepository = CompanyRepository("https://9hqe5z0uw7.execute-api.ap-northeast-1.amazonaws.com")
+            val companyApiInterface = companyRepository.getCompanies()
+
+            companyApiInterface.getCompanyList().enqueue(object: Callback<Companies>{
+                override fun onFailure(call: Call<Companies>, t: Throwable) {
+                    Log.d("yoshiya_debug", t.message)
                 }
-            } catch (t: Throwable) {
-                Log.d("yoshiya_debug", t.message)
-            }
+
+                override fun onResponse(call: Call<Companies>, response: Response<Companies>) {
+                    if (response.isSuccessful) {
+                        val mutableLiveData = MutableLiveData<MutableList<Company>>()
+                        val newCompanyList = response.body()!!.companies
+                        Log.d("yoshiya_debug", newCompanyList[0].name)
+                        mutableLiveData.value = newCompanyList
+                        companyList = newCompanyList
+                        companyListData = mutableLiveData
+                    }
+                }
+            })
+        } catch (t: Throwable) {
+            Log.d("yoshiya_debug", t.message)
         }
     }
 
