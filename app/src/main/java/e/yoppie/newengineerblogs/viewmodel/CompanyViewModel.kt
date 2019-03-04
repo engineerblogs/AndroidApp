@@ -14,7 +14,6 @@ class CompanyViewModel : ViewModel() {
     var categoryList: MutableLiveData<List<Category>>
 
     init {
-        GlobalScope.launch { loadTest() }
         categoryList = loadAllCategoryArticles()
     }
 
@@ -45,20 +44,4 @@ class CompanyViewModel : ViewModel() {
 
         // todo: modelLayerから取得する処理に修正せよ
     }
-
-    private fun loadTest(){
-        try{
-            val articleRepository = ArticleRepository("https://9hqe5z0uw7.execute-api.ap-northeast-1.amazonaws.com")
-            val response = articleRepository.getCompanies()
-
-            if(response.isSuccessful){
-                Log.d("yoshiya_debug", response.body()!!.companies[0].name)
-            }else{
-                Log.d("yoshiya_debug", "miss")
-            }
-        }catch (t: Throwable){
-            Log.d("yoshiya_debug", t.message)
-        }
-    }
-
 }

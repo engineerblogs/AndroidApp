@@ -1,3 +1,3 @@
 package e.yoppie.newengineerblogs.model.data
 
-data class Companies (val companies: List<Company>)
+data class Companies (val companies: MutableList<Company>)

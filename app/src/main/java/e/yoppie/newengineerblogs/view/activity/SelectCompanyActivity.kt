@@ -23,9 +23,10 @@ class SelectCompanyActivity : AppCompatActivity() {
         val gridLayoutManager = GridLayoutManager(this, 2)
         binding.companyRecyclerView.layoutManager = gridLayoutManager
         binding.companyRecyclerView.adapter = CompanyRecyclerAdapter(this, viewModel)
-        binding.companyRecyclerView
-                .scrollEvents()
-                .filter { gridLayoutManager.itemCount - 1 <= gridLayoutManager.findLastVisibleItemPosition() }
-                .subscribe { viewModel.loadMore() }
+//        binding.companyRecyclerView
+//                .scrollEvents()
+//                .filter { gridLayoutManager.itemCount - 1 <= gridLayoutManager.findLastVisibleItemPosition() }
+//                .subscribe { viewModel.loadMore() }
+        viewModel.load()
     }
 }
