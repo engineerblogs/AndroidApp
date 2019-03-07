@@ -1,13 +1,14 @@
 package e.yoppie.newengineerblogs.view.activity
 
+import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.util.Log
-import com.jakewharton.rxbinding.support.v7.widget.scrollEvents
-import com.jakewharton.rxbinding.view.clicks
+import com.jakewharton.rxbinding2.view.clicks
+import com.jakewharton.rxbinding2.support.v7.widget.scrollEvents
 import e.yoppie.newengineerblogs.R
 import e.yoppie.newengineerblogs.databinding.ActivitySelectCompanyBinding
 import e.yoppie.newengineerblogs.view.adapter.CompanyRecyclerAdapter
@@ -15,6 +16,7 @@ import e.yoppie.newengineerblogs.viewmodel.SelectCompanyViewModel
 
 class SelectCompanyActivity : AppCompatActivity() {
 
+    @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -25,16 +27,13 @@ class SelectCompanyActivity : AppCompatActivity() {
         val gridLayoutManager = GridLayoutManager(this, 2)
         binding.companyRecyclerView.layoutManager = gridLayoutManager
         binding.companyRecyclerView.adapter = CompanyRecyclerAdapter(this, viewModel)
+
         binding.companyRecyclerView
                 .scrollEvents()
                 .filter { gridLayoutManager.itemCount - 1 <= gridLayoutManager.findLastVisibleItemPosition() }
                 .subscribe { viewModel.loadMore() }
 
-        binding.demoButton.clicks()
-                .limit(1)
-                .subscribe {
-                    Log.d("yoshiya_debug", "click!!")
-                }
+        binding.demoButton.clicks().subscribe { Log.d("", "") }
 
 //        viewModel.load()
     }

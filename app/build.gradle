@@ -70,12 +70,12 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.5'
     implementation 'io.reactivex:rxkotlin:1.0.0'
-    def rx_binding_version = '1.0.1'
-    implementation "com.jakewharton.rxbinding:rxbinding-kotlin:$rx_binding_version"
-    implementation "com.jakewharton.rxbinding:rxbinding-recyclerview-v7-kotlin:$rx_binding_version"
-    implementation "com.jakewharton.rxbinding:rxbinding-appcompat-v7-kotlin:$rx_binding_version"
-    implementation "com.jakewharton.rxbinding:rxbinding-support-v4-kotlin:$rx_binding_version"
-    implementation "com.jakewharton.rxbinding:rxbinding-design-kotlin:$rx_binding_version"
+    def rx_binding2_version = '2.2.0'
+    implementation "com.jakewharton.rxbinding2:rxbinding-kotlin:$rx_binding2_version"
+    implementation "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:$rx_binding2_version"
+    implementation "com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:$rx_binding2_version"
+    implementation "com.jakewharton.rxbinding2:rxbinding-support-v4-kotlin:$rx_binding2_version"
+    implementation "com.jakewharton.rxbinding2:rxbinding-design-kotlin:$rx_binding2_version"
 
     // Dagger
     def dagger_version = '2.21'
