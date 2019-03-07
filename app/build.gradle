@@ -34,7 +34,10 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    // multidex
     implementation 'com.android.support:multidex:1.0.3'
+
     //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
@@ -48,7 +51,6 @@ dependencies {
 
     // RecyclerView
     implementation 'com.android.support:recyclerview-v7:28.0.0'
-    implementation 'com.jakewharton.rxbinding:rxbinding-recyclerview-v7-kotlin:1.0.1'
 
     // CardView
     implementation 'com.android.support:cardview-v7:28.0.0'
@@ -68,9 +70,12 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.5'
     implementation 'io.reactivex:rxkotlin:1.0.0'
-
-    // RxBinding
-    implementation "com.jakewharton.rxbinding2:rxbinding-kotlin:2.2.0"
+    def rx_binding_version = '1.0.1'
+    implementation "com.jakewharton.rxbinding:rxbinding-kotlin:$rx_binding_version"
+    implementation "com.jakewharton.rxbinding:rxbinding-recyclerview-v7-kotlin:$rx_binding_version"
+    implementation "com.jakewharton.rxbinding:rxbinding-appcompat-v7-kotlin:$rx_binding_version"
+    implementation "com.jakewharton.rxbinding:rxbinding-support-v4-kotlin:$rx_binding_version"
+    implementation "com.jakewharton.rxbinding:rxbinding-design-kotlin:$rx_binding_version"
 
     // Dagger
     def dagger_version = '2.21'
