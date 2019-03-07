@@ -46,10 +46,11 @@ class SelectCompanyViewModel : ViewModel() {
                     if (response.isSuccessful) {
                         val mutableLiveData = MutableLiveData<MutableList<Company>>()
                         val newCompanyList = response.body()!!.companies
-                        Log.d("yoshiya_debug", newCompanyList[0].name)
+                        Log.d("yoshiya_debug", newCompanyList[0].img)
                         mutableLiveData.value = newCompanyList
                         companyList = newCompanyList
                         companyListData = mutableLiveData
+                        Log.d("yoshiya_debug", companyListData.value!![0].img)
                     }
                 }
             })
