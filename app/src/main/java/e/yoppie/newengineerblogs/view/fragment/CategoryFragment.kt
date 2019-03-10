@@ -1,5 +1,6 @@
 package e.yoppie.newengineerblogs.view.fragment
 
+import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.databinding.DataBindingUtil
@@ -9,7 +10,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.jakewharton.rxbinding.support.v7.widget.scrollEvents
+import com.jakewharton.rxbinding2.support.v4.widget.refreshes
+import com.jakewharton.rxbinding2.support.v7.widget.scrollEvents
 import e.yoppie.newengineerblogs.R
 import e.yoppie.newengineerblogs.databinding.CategoryFragmentBinding
 import e.yoppie.newengineerblogs.listener.OnRecyclerListener
@@ -31,19 +33,25 @@ class CategoryFragment : Fragment(), OnRecyclerListener {
         this.articleViewModel = articleViewModel
     }
 
+    @SuppressLint("CheckResult")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var binding = DataBindingUtil.inflate<CategoryFragmentBinding>(inflater, R.layout.category_fragment, container, false)
         binding.lifecycleOwner = this
-        binding.categoryFragmentSwipeRefreshLayout.setOnRefreshListener {
-            articleViewModel.loadArticles()
-            if (binding.categoryFragmentSwipeRefreshLayout.isRefreshing) {
-                binding.categoryFragmentSwipeRefreshLayout.isRefreshing = false
-            }
-        }
+        // rxbinding2:rxbinding-support-v4-kotlin
+        // RxSwipeRefreshLayout
+        binding.categoryFragmentSwipeRefreshLayout
+                .refreshes()
+                .subscribe {
+                    articleViewModel.loadArticles()
+                    if (binding.categoryFragmentSwipeRefreshLayout.isRefreshing) {
+                        binding.categoryFragmentSwipeRefreshLayout.isRefreshing = false
+                    }
+                }
         binding = setArticleRecyclerView(binding)
         return binding.root
     }
 
+    @SuppressLint("CheckResult")
     private fun setArticleRecyclerView(binding: CategoryFragmentBinding): CategoryFragmentBinding? {
         val linearLayoutManager = LinearLayoutManager(activity)
         binding.articleRecyclerView.layoutManager = linearLayoutManager
@@ -52,7 +60,6 @@ class CategoryFragment : Fragment(), OnRecyclerListener {
                 .scrollEvents()
                 .filter { linearLayoutManager.itemCount - 1 <= linearLayoutManager.findLastVisibleItemPosition() }
                 .subscribe { articleViewModel.loadMore() }
-
         return binding
     }
 
