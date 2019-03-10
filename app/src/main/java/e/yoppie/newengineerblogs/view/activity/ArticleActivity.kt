@@ -24,7 +24,7 @@ class ArticleActivity : AppCompatActivity() {
         articleWebView.loadUrl(url)
 
         // rxbinding-appcompat-v7-kotlin
-        toolbar.itemClicks().subscribe{ Log.d("yoshiya_debug", "itemClicks") }
+        toolbar.itemClicks().subscribe{ Log.d("debug", "itemClicks") }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

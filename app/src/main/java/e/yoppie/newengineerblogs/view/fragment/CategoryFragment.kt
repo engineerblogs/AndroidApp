@@ -37,6 +37,7 @@ class CategoryFragment : Fragment(), OnRecyclerListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var binding = DataBindingUtil.inflate<CategoryFragmentBinding>(inflater, R.layout.category_fragment, container, false)
         binding.lifecycleOwner = this
+
         binding.categoryFragmentSwipeRefreshLayout
                 .refreshes()
                 .subscribe {
@@ -45,6 +46,7 @@ class CategoryFragment : Fragment(), OnRecyclerListener {
                         binding.categoryFragmentSwipeRefreshLayout.isRefreshing = false
                     }
                 }
+
         binding = setArticleRecyclerView(binding)
         return binding.root
     }
