@@ -37,8 +37,6 @@ class CategoryFragment : Fragment(), OnRecyclerListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var binding = DataBindingUtil.inflate<CategoryFragmentBinding>(inflater, R.layout.category_fragment, container, false)
         binding.lifecycleOwner = this
-        // rxbinding2:rxbinding-support-v4-kotlin
-        // RxSwipeRefreshLayout
         binding.categoryFragmentSwipeRefreshLayout
                 .refreshes()
                 .subscribe {

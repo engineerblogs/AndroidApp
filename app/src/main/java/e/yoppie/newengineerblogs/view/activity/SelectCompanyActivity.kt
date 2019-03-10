@@ -7,10 +7,6 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.util.Log
-import com.jakewharton.rxbinding2.support.design.widget.RxFloatingActionButton
-import com.jakewharton.rxbinding2.support.design.widget.RxNavigationView
-import com.jakewharton.rxbinding2.support.design.widget.itemSelections
-import com.jakewharton.rxbinding2.support.v17.leanback.widget.RxSearchEditText
 import com.jakewharton.rxbinding2.support.v7.widget.scrollEvents
 import com.jakewharton.rxbinding2.view.clicks
 import e.yoppie.newengineerblogs.R
@@ -19,6 +15,8 @@ import e.yoppie.newengineerblogs.view.adapter.CompanyRecyclerAdapter
 import e.yoppie.newengineerblogs.viewmodel.SelectCompanyViewModel
 
 class SelectCompanyActivity : AppCompatActivity() {
+
+    private var clickCount = 0
 
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,16 +33,17 @@ class SelectCompanyActivity : AppCompatActivity() {
         // rxbinding2:rxbinding-kotlin
         binding.demoButton
                 .clicks()
-                .subscribe { Log.d("yoshiya_debug", "click!!") }
+                .filter { clickCount < 1 }
+                .subscribe {
+                    clickCount++
+                    Log.d("yoshiya_debug", "click!!")
+                }
 
         // rxbinding2:rxbinding-recyclerview-v7-kotlin
         binding.companyRecyclerView
                 .scrollEvents()
                 .filter { gridLayoutManager.itemCount - 1 <= gridLayoutManager.findLastVisibleItemPosition() }
                 .subscribe { viewModel.loadMore() }
-
-        // rxbinding2:rxbinding-design-kotlin
-        binding.demoNavigationView.itemSelections().subscribe { Log.d("yoshiya_debug", "itemSelections") }
 
 //        viewModel.load()
     }

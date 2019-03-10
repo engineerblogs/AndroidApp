@@ -14,14 +14,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.design.widget.NavigationView
-            android:id="@+id/demoNavigationView"
-            app:menu="@menu/article_menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </android.support.design.widget.NavigationView>
-
         <android.support.v7.widget.RecyclerView
             android:id="@+id/companyRecyclerView"
             android:layout_width="match_parent"
