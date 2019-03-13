@@ -45,6 +45,6 @@ class SelectCompanyActivity : AppCompatActivity() {
                 .filter { gridLayoutManager.itemCount - 1 <= gridLayoutManager.findLastVisibleItemPosition() }
                 .subscribe { viewModel.loadMore() }
 
-//        viewModel.load()
+        viewModel.load()
     }
 }
