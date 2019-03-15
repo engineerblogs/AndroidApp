@@ -60,7 +60,7 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:$arch_lifecycle_version"
     implementation "android.arch.lifecycle:reactivestreams:$arch_lifecycle_version"
     annotationProcessor "android.arch.lifecycle:compiler:$arch_lifecycle_version"
-    def arch_navigation_version = '1.0.0-rc02'
+    def arch_navigation_version = '1.0.0'
     implementation "android.arch.navigation:navigation-fragment:$arch_navigation_version"
     implementation "android.arch.navigation:navigation-ui:$arch_navigation_version"
     implementation "android.arch.navigation:navigation-fragment-ktx:$arch_navigation_version"
