@@ -2,13 +2,8 @@ package e.yoppie.newengineerblogs.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import android.util.Log
-import e.yoppie.newengineerblogs.model.data.Companies
 import e.yoppie.newengineerblogs.model.data.Company
 import e.yoppie.newengineerblogs.repository.CompanyRepository
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class SelectCompanyViewModel : ViewModel() {
     var companyListData: MutableLiveData<MutableList<Company>>
@@ -16,6 +11,7 @@ class SelectCompanyViewModel : ViewModel() {
 
     init {
         val mutableLiveData = MutableLiveData<MutableList<Company>>()
+        // todo: サンプル画像などに変更
         val companyList = mutableListOf(
                 Company("1", "ぐるなび", "https://images-na.ssl-images-amazon.com/images/I/61DAfypzYnL._SY445_.jpg"),
                 Company("2", "ぐるなび", "https://images-na.ssl-images-amazon.com/images/I/61DAfypzYnL._SY445_.jpg"),
@@ -33,30 +29,8 @@ class SelectCompanyViewModel : ViewModel() {
     }
 
     fun load() {
-        try {
-            val companyRepository = CompanyRepository("https://9hqe5z0uw7.execute-api.ap-northeast-1.amazonaws.com")
-            val companyApiInterface = companyRepository.getCompanies()
-
-            companyApiInterface.getCompanyList().enqueue(object: Callback<Companies>{
-                override fun onFailure(call: Call<Companies>, t: Throwable) {
-                    Log.d("yoshiya_debug", t.message)
-                }
-
-                override fun onResponse(call: Call<Companies>, response: Response<Companies>) {
-                    if (response.isSuccessful) {
-                        val mutableLiveData = MutableLiveData<MutableList<Company>>()
-                        val newCompanyList = response.body()!!.companies
-                        Log.d("yoshiya_debug", newCompanyList[0].img)
-                        mutableLiveData.value = newCompanyList
-                        companyList = newCompanyList
-                        companyListData = mutableLiveData
-                        Log.d("yoshiya_debug", companyListData.value!![0].img)
-                    }
-                }
-            })
-        } catch (t: Throwable) {
-            Log.d("yoshiya_debug", t.message)
-        }
+        val companyRepository = CompanyRepository()
+        val newCompanyList = companyRepository.getCompanies()
     }
 
     fun loadMore() {
