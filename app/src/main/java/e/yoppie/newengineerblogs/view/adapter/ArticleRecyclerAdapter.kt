@@ -24,7 +24,7 @@ class ArticleRecyclerAdapter(private val context: Fragment, viewModel: ArticleVi
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = DataBindingUtil.inflate<ArticleItemBinding>(layoutInflater, R.layout.article_item, parent, false)
-        binding.setLifecycleOwner(context)
+        binding.lifecycleOwner = context
         return ArticleViewHolder(binding)
     }
 

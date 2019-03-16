@@ -11,11 +11,11 @@ import com.jakewharton.rxbinding2.support.v7.widget.scrollEvents
 import com.jakewharton.rxbinding2.view.clicks
 import e.yoppie.newengineerblogs.R
 import e.yoppie.newengineerblogs.databinding.ActivitySelectCompanyBinding
+import e.yoppie.newengineerblogs.listener.OnCompanyRecyclerListener
 import e.yoppie.newengineerblogs.view.adapter.CompanyRecyclerAdapter
 import e.yoppie.newengineerblogs.viewmodel.SelectCompanyViewModel
 
-class SelectCompanyActivity : AppCompatActivity() {
-
+class SelectCompanyActivity : AppCompatActivity(), OnCompanyRecyclerListener {
     private var clickCount = 0
 
     @SuppressLint("CheckResult")
@@ -28,7 +28,7 @@ class SelectCompanyActivity : AppCompatActivity() {
 
         val gridLayoutManager = GridLayoutManager(this, 2)
         binding.companyRecyclerView.layoutManager = gridLayoutManager
-        binding.companyRecyclerView.adapter = CompanyRecyclerAdapter(this, viewModel)
+        binding.companyRecyclerView.adapter = CompanyRecyclerAdapter(this, viewModel, this)
 
         // rxbinding2:rxbinding-kotlin
         binding.demoButton
@@ -45,5 +45,9 @@ class SelectCompanyActivity : AppCompatActivity() {
                 .subscribe { viewModel.loadMore() }
 
         viewModel.load()
+    }
+
+    override fun onRecyclerViewClick(companyId: String) {
+        Log.d("yoshiya_debug", companyId)
     }
 }
