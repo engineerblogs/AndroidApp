@@ -16,7 +16,7 @@ import e.yoppie.newengineerblogs.view.adapter.CompanyRecyclerAdapter
 import e.yoppie.newengineerblogs.viewmodel.SelectCompanyViewModel
 
 class SelectCompanyActivity : AppCompatActivity(), OnCompanyRecyclerListener {
-    private var clickCount = 0
+    private var companyIdList: MutableList<String> = mutableListOf()
 
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,12 +30,10 @@ class SelectCompanyActivity : AppCompatActivity(), OnCompanyRecyclerListener {
         binding.companyRecyclerView.layoutManager = gridLayoutManager
         binding.companyRecyclerView.adapter = CompanyRecyclerAdapter(this, viewModel, this)
 
-        // rxbinding2:rxbinding-kotlin
         binding.demoButton
                 .clicks()
-                .filter { clickCount < 1 }
+                .filter { companyIdList.size > 0}
                 .subscribe {
-                    clickCount++
                     Log.d("yoshiya_debug", "click!!")
                 }
 
@@ -48,6 +46,10 @@ class SelectCompanyActivity : AppCompatActivity(), OnCompanyRecyclerListener {
     }
 
     override fun onRecyclerViewClick(companyId: String) {
-        Log.d("yoshiya_debug", companyId)
+        if (companyIdList.contains(companyId)) {
+            companyIdList.remove(companyId)
+        } else {
+            companyIdList.add(companyId)
+        }
     }
 }

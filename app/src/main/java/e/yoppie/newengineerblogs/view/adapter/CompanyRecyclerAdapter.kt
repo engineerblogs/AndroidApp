@@ -2,6 +2,7 @@ package e.yoppie.newengineerblogs.view.adapter
 
 import android.annotation.SuppressLint
 import android.databinding.DataBindingUtil
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
@@ -18,6 +19,7 @@ import e.yoppie.newengineerblogs.viewmodel.SelectCompanyViewModel
 
 class CompanyRecyclerAdapter(private val context: AppCompatActivity, viewModel: SelectCompanyViewModel, private var onCompanyRecyclerListener: OnCompanyRecyclerListener) : RecyclerView.Adapter<CompanyViewHolder>() {
     private var items: MutableList<Company> = mutableListOf()
+    private var companyIdList: MutableList<String> = mutableListOf()
 
     init {
         viewModel.companyListData.observe({ context.lifecycle }, { it?.apply { update(this) } })
@@ -46,6 +48,14 @@ class CompanyRecyclerAdapter(private val context: AppCompatActivity, viewModel: 
         holder.itemView
                 .clicks()
                 .subscribe {
+                    val companyId = items[position].id
+                    if (this.companyIdList.contains(companyId)) {
+                        holder.itemView.setBackgroundColor(Color.WHITE)
+                        this.companyIdList.remove(companyId)
+                    } else {
+                        holder.itemView.setBackgroundColor(Color.DKGRAY)
+                        this.companyIdList.add(companyId)
+                    }
                     onCompanyRecyclerListener.onRecyclerViewClick(items[position].id)
                 }
     }
