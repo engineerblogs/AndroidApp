@@ -39,7 +39,6 @@ class SelectCompanyActivity : AppCompatActivity() {
                     Log.d("yoshiya_debug", "click!!")
                 }
 
-        // rxbinding2:rxbinding-recyclerview-v7-kotlin
         binding.companyRecyclerView
                 .scrollEvents()
                 .filter { gridLayoutManager.itemCount - 1 <= gridLayoutManager.findLastVisibleItemPosition() }

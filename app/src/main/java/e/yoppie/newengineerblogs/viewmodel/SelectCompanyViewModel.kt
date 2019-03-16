@@ -1,13 +1,18 @@
 package e.yoppie.newengineerblogs.viewmodel
 
+import android.annotation.SuppressLint
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.util.Log
 import e.yoppie.newengineerblogs.model.data.Company
 import e.yoppie.newengineerblogs.repository.CompanyRepository
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class SelectCompanyViewModel : ViewModel() {
+
     var companyListData: MutableLiveData<MutableList<Company>>
-    var companyList: MutableList<Company>
+    private var companyList: MutableList<Company>
 
     init {
         val mutableLiveData = MutableLiveData<MutableList<Company>>()
@@ -28,9 +33,18 @@ class SelectCompanyViewModel : ViewModel() {
         companyListData = mutableLiveData
     }
 
+    @SuppressLint("CheckResult")
     fun load() {
         val companyRepository = CompanyRepository()
-        val newCompanyList = companyRepository.getCompanies()
+        companyRepository.getCompanyList()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ res ->
+                    this.companyList = res.companies
+                    companyListData.postValue(res.companies)
+                }, { error ->
+                    Log.d("yoshiya_debug", error.message)
+                })
     }
 
     fun loadMore() {
