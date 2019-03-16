@@ -32,7 +32,7 @@ class SelectCompanyActivity : AppCompatActivity(), OnCompanyRecyclerListener {
 
         binding.demoButton
                 .clicks()
-                .filter { companyIdList.size > 0}
+                .filter { companyIdList.size > 0 }
                 .subscribe {
                     Log.d("yoshiya_debug", "click!!")
                 }
