@@ -7,8 +7,8 @@ import e.yoppie.newengineerblogs.model.room.entity.CompanyEntity
 
 @Dao
 interface CompanyDao {
-//    @Insert
-//    fun insert(entity: CompanyEntity)
+    @Insert
+    fun insert(entity: CompanyEntity)
 
     @Query("SELECT * FROM CompanyEntity")
     fun findAll(): List<CompanyEntity>

@@ -9,6 +9,6 @@ class CompanyEntity {
     @PrimaryKey
     var companyEntityId: Int = 0
 
-//    @ColumnInfo(name = "company_id")
-//    var companyId: String? = null
+    @ColumnInfo(name = "company_id")
+    var companyId: String? = null
 }
