@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.jakewharton.rxbinding2.view.clicks
@@ -25,11 +26,9 @@ class CompanyRecyclerAdapter(private val context: AppCompatActivity, viewModel: 
         viewModel.companyListData.observe({ context.lifecycle }, { it?.apply { update(this) } })
     }
 
-    @SuppressLint("CheckResult")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CompanyViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = DataBindingUtil.inflate<SelectCompanyItemBinding>(layoutInflater, R.layout.select_company_item, parent, false)
-
         binding.lifecycleOwner = context
         return CompanyViewHolder(binding)
     }

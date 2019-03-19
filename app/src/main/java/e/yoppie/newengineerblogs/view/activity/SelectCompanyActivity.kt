@@ -12,8 +12,12 @@ import com.jakewharton.rxbinding2.view.clicks
 import e.yoppie.newengineerblogs.R
 import e.yoppie.newengineerblogs.databinding.ActivitySelectCompanyBinding
 import e.yoppie.newengineerblogs.listener.OnCompanyRecyclerListener
+import e.yoppie.newengineerblogs.model.room.AppDatabase
+import e.yoppie.newengineerblogs.model.room.entity.CompanyEntity
 import e.yoppie.newengineerblogs.view.adapter.CompanyRecyclerAdapter
 import e.yoppie.newengineerblogs.viewmodel.SelectCompanyViewModel
+import io.reactivex.Completable
+import io.reactivex.schedulers.Schedulers
 
 class SelectCompanyActivity : AppCompatActivity(), OnCompanyRecyclerListener {
     private var companyIdList: MutableList<String> = mutableListOf()
@@ -35,6 +39,12 @@ class SelectCompanyActivity : AppCompatActivity(), OnCompanyRecyclerListener {
                 .filter { companyIdList.size > 0 }
                 .subscribe {
                     Log.d("yoshiya_debug", "click!!")
+                    val companyEntity = CompanyEntity.create("01")
+                    val db = AppDatabase.getInstance(applicationContext)!!
+                    Completable
+                            .fromAction { val id = db.companyDao().insert(companyEntity) }
+                            .subscribeOn(Schedulers.io())
+                            .subscribe()
                 }
 
         binding.companyRecyclerView
@@ -42,7 +52,7 @@ class SelectCompanyActivity : AppCompatActivity(), OnCompanyRecyclerListener {
                 .filter { gridLayoutManager.itemCount - 1 <= gridLayoutManager.findLastVisibleItemPosition() }
                 .subscribe { viewModel.loadMore() }
 
-        viewModel.load()
+        //viewModel.load()
     }
 
     override fun onRecyclerViewClick(companyId: String) {

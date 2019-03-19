@@ -8,7 +8,7 @@ import e.yoppie.newengineerblogs.model.room.dao.CompanyDao
 import e.yoppie.newengineerblogs.model.room.entity.CompanyEntity
 
 @Database(entities = [CompanyEntity::class], version = 1)
-abstract class AppDatabase: RoomDatabase() {
+abstract class AppDatabase : RoomDatabase() {
     abstract fun companyDao(): CompanyDao
 
     companion object {
@@ -18,7 +18,7 @@ abstract class AppDatabase: RoomDatabase() {
             if (INSTANCE == null) {
                 synchronized(AppDatabase::class) {
                     INSTANCE = Room.databaseBuilder(context.applicationContext,
-                            AppDatabase::class.java, "MyDatabase.db")
+                            AppDatabase::class.java, "AppDatabase.db")
                             .build()
                 }
             }
