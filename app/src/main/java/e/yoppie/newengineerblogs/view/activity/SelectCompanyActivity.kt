@@ -2,7 +2,6 @@ package e.yoppie.newengineerblogs.view.activity
 
 import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
-import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -13,16 +12,11 @@ import com.jakewharton.rxbinding2.view.clicks
 import e.yoppie.newengineerblogs.R
 import e.yoppie.newengineerblogs.databinding.ActivitySelectCompanyBinding
 import e.yoppie.newengineerblogs.listener.OnCompanyRecyclerListener
-import e.yoppie.newengineerblogs.model.room.AppDatabase
-import e.yoppie.newengineerblogs.model.room.entity.CompanyEntity
 import e.yoppie.newengineerblogs.view.adapter.CompanyRecyclerAdapter
 import e.yoppie.newengineerblogs.viewmodel.SelectCompanyViewModel
-import io.reactivex.Completable
-import io.reactivex.schedulers.Schedulers
 
 class SelectCompanyActivity : AppCompatActivity(), OnCompanyRecyclerListener {
     private var companyIdList: MutableList<String> = mutableListOf()
-    private var companyEntityList: MutableList<CompanyEntity> = mutableListOf()
 
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,14 +34,14 @@ class SelectCompanyActivity : AppCompatActivity(), OnCompanyRecyclerListener {
         binding.demoButton
                 .clicks()
                 .filter { companyIdList.size > 0 }
-                .subscribe { standbyMainActivity() }
+                .subscribe { viewModel.saveSelectCompanyList(companyIdList, applicationContext) }
 
         binding.companyRecyclerView
                 .scrollEvents()
                 .filter { gridLayoutManager.itemCount - 1 <= gridLayoutManager.findLastVisibleItemPosition() }
-                .subscribe { viewModel.loadMore() }
+                .subscribe { viewModel.loadMoreCompanyList() }
 
-        viewModel.load()
+        viewModel.loadFirstCompanyList()
     }
 
     override fun onRecyclerViewClick(companyId: String) {
@@ -64,22 +58,5 @@ class SelectCompanyActivity : AppCompatActivity(), OnCompanyRecyclerListener {
                         .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
                         .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
                         .build())
-    }
-
-    @SuppressLint("CheckResult")
-    private fun standbyMainActivity(){
-        companyIdList.forEach {
-            companyEntityList.add(CompanyEntity.create(it))
-        }
-        val db = AppDatabase.getInstance(applicationContext)!!
-        Completable
-                .fromAction {
-                    val id = db.companyDao().insertItems(companyEntityList)
-                }
-                .subscribeOn(Schedulers.io())
-                .subscribe {
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                }
     }
 }
