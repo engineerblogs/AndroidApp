@@ -123,4 +123,9 @@ dependencies {
     def glide_version = '4.9.0'
     implementation "com.github.bumptech.glide:glide:$glide_version"
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+
+    // Sthetho
+    def sthetho_version = '1.5.1'
+    debugImplementation"com.facebook.stetho:stetho:$sthetho_version"
+    debugImplementation"com.facebook.stetho:stetho-okhttp3:$sthetho_version"
 }
