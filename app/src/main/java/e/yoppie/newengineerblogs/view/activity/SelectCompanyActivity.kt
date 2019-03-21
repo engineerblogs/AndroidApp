@@ -2,11 +2,11 @@ package e.yoppie.newengineerblogs.view.activity
 
 import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
-import android.util.Log
 import com.facebook.stetho.Stetho
 import com.jakewharton.rxbinding2.support.v7.widget.scrollEvents
 import com.jakewharton.rxbinding2.view.clicks
@@ -22,6 +22,7 @@ import io.reactivex.schedulers.Schedulers
 
 class SelectCompanyActivity : AppCompatActivity(), OnCompanyRecyclerListener {
     private var companyIdList: MutableList<String> = mutableListOf()
+    private var companyEntityList: MutableList<CompanyEntity> = mutableListOf()
 
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,15 +40,7 @@ class SelectCompanyActivity : AppCompatActivity(), OnCompanyRecyclerListener {
         binding.demoButton
                 .clicks()
                 .filter { companyIdList.size > 0 }
-                .subscribe {
-                    Log.d("yoshiya_debug", "click!!")
-                    val companyEntity = CompanyEntity.create("01")
-                    val db = AppDatabase.getInstance(applicationContext)!!
-                    Completable
-                            .fromAction { val id = db.companyDao().insert(companyEntity) }
-                            .subscribeOn(Schedulers.io())
-                            .subscribe()
-                }
+                .subscribe { standbyMainActivity() }
 
         binding.companyRecyclerView
                 .scrollEvents()
@@ -70,6 +63,23 @@ class SelectCompanyActivity : AppCompatActivity(), OnCompanyRecyclerListener {
                 Stetho.newInitializerBuilder(this)
                         .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
                         .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
-                        .build());
+                        .build())
+    }
+
+    @SuppressLint("CheckResult")
+    private fun standbyMainActivity(){
+        companyIdList.forEach {
+            companyEntityList.add(CompanyEntity.create(it))
+        }
+        val db = AppDatabase.getInstance(applicationContext)!!
+        Completable
+                .fromAction {
+                    val id = db.companyDao().insertItems(companyEntityList)
+                }
+                .subscribeOn(Schedulers.io())
+                .subscribe {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                }
     }
 }

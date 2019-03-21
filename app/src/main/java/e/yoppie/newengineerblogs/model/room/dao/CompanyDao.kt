@@ -8,8 +8,14 @@ import e.yoppie.newengineerblogs.model.room.entity.CompanyEntity
 @Dao
 interface CompanyDao {
     @Insert
-    fun insert(entity: CompanyEntity)
+    fun insertItem(entity: CompanyEntity)
+
+    @Insert
+    fun insertItems(items: MutableList<CompanyEntity>)
 
     @Query("SELECT * FROM CompanyEntity")
     fun findAll(): List<CompanyEntity>
+
+    @Query("DELETE FROM CompanyEntity")
+    fun deleteAll()
 }
