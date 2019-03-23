@@ -18,9 +18,13 @@ class MainActivity : AppCompatActivity() {
 
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         val viewModel = ViewModelProviders.of(this).get(CompanyViewModel::class.java)
+
+        // todo: このifはテストするために入れている　最後にはずす
         if (viewModel.categoryList.value!!.isEmpty()) {
             showSelectCompany()
         }
+
+        viewModel.getSavedCompanyList(this)
 
         binding.viewModel = viewModel
         binding.mainViewPager.offscreenPageLimit = 5

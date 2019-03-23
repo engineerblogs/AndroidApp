@@ -1,17 +1,23 @@
 package e.yoppie.newengineerblogs.viewmodel
 
+import android.annotation.SuppressLint
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.content.Context
 import android.util.Log
 import e.yoppie.newengineerblogs.model.data.Article
 import e.yoppie.newengineerblogs.model.data.Category
+import e.yoppie.newengineerblogs.model.room.entity.CompanyEntity
 import e.yoppie.newengineerblogs.repository.ArticleRepository
+import io.reactivex.Completable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class CompanyViewModel : ViewModel() {
 
     var categoryList: MutableLiveData<List<Category>>
+    private var articleRepository: ArticleRepository = ArticleRepository()
 
     init {
         categoryList = loadAllCategoryArticles()
@@ -44,4 +50,20 @@ class CompanyViewModel : ViewModel() {
 
         // todo: modelLayerから取得する処理に修正せよ
     }
+
+    @SuppressLint("CheckResult")
+    fun getSavedCompanyList(context: Context){
+        var hoge: List<CompanyEntity> = mutableListOf()
+        Completable
+                .fromAction {
+                    hoge = articleRepository.getLocalSavedCompanyList(context)
+                }
+                .subscribeOn(Schedulers.io())
+                .subscribe {
+                    hoge.forEach {
+                        Log.d("yoshiya_debug", it.companyId.toString())
+                    }
+                }
+    }
+
 }
