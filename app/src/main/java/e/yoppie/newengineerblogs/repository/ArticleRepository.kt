@@ -10,4 +10,6 @@ class ArticleRepository: BaseRepository() {
         val db = AppDatabase.getInstance(context)!!
         return db.companyDao().findAll()
     }
+
+
 }

@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:node="replace">
-        <activity android:name=".view.activity.SelectCompanyActivity"></activity>
+        <activity android:name=".view.activity.SelectCompanyActivity" />
         <activity
             android:name=".view.activity.ArticleActivity"
             android:label="@string/title_activity_article"
