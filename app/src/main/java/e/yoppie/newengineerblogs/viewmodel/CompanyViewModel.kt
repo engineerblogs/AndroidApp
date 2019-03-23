@@ -53,16 +53,13 @@ class CompanyViewModel : ViewModel() {
 
     @SuppressLint("CheckResult")
     fun getSavedCompanyList(context: Context){
-        var hoge: List<CompanyEntity> = mutableListOf()
+        var localCompanyEntitiyList: List<CompanyEntity> = mutableListOf()
         Completable
                 .fromAction {
-                    hoge = articleRepository.getLocalSavedCompanyList(context)
+                    localCompanyEntitiyList = articleRepository.getLocalSavedCompanyList(context)
                 }
                 .subscribeOn(Schedulers.io())
                 .subscribe {
-                    hoge.forEach {
-                        Log.d("yoshiya_debug", it.companyId.toString())
-                    }
                 }
     }
 
