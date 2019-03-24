@@ -10,26 +10,44 @@
             type="e.yoppie.newengineerblogs.viewmodel.SelectCompanyItemViewModel" />
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4pt"
-        android:background="@color/colorNoSelectBackGround"
-        android:orientation="horizontal">
+        android:background="@color/colorNoSelectBackGround">
 
         <ImageView
             android:id="@+id/companyImageView"
             android:layout_width="48pt"
             android:layout_height="48pt"
+            android:layout_centerVertical="true"
             android:layout_margin="6pt"
             app:imageUrl="@{viewModel.img}" />
 
         <TextView
+            android:id="@+id/companyNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_margin="6pt"
+            android:layout_toLeftOf="@+id/interestingSparkButton"
+            android:layout_toRightOf="@+id/companyImageView"
             android:text="@{viewModel.name}" />
 
-    </LinearLayout>
+        <com.varunest.sparkbutton.SparkButton
+            android:id="@+id/interestingSparkButton"
+            android:layout_width="24pt"
+            android:layout_height="24pt"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="6pt"
+            app:sparkbutton_activeImage="@drawable/ic_heart_on"
+            app:sparkbutton_animationSpeed="2.0"
+            app:sparkbutton_iconSize="24pt"
+            app:sparkbutton_inActiveImage="@drawable/ic_heart_off"
+            app:sparkbutton_primaryColor="@color/colorPrimary"
+            app:sparkbutton_secondaryColor="@color/colorPrimaryDark" />
+
+    </RelativeLayout>
 
 </layout>

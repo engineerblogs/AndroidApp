@@ -128,4 +128,8 @@ dependencies {
     def sthetho_version = '1.5.1'
     debugImplementation"com.facebook.stetho:stetho:$sthetho_version"
     debugImplementation"com.facebook.stetho:stetho-okhttp3:$sthetho_version"
+
+    // SparkButton
+    def spark_button_version = '1.0.6'
+    implementation "com.github.varunest:sparkbutton:$spark_button_version"
 }

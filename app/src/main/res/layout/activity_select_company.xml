@@ -34,12 +34,14 @@
 
         <Button
             android:id="@+id/demoButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_margin="16pt"
-            android:text="@string/save" />
+            android:background="@drawable/rounded_corners_button"
+            android:text="@string/save"
+            android:textColor="@color/colorPrimary" />
 
     </RelativeLayout>
 
