@@ -9,27 +9,38 @@
             type="e.yoppie.newengineerblogs.viewmodel.SelectCompanyViewModel" />
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@android:color/white">
 
         <TextView
+            android:id="@+id/selectInterestingTopic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="気になる会社を選んでください" />
+            android:layout_alignParentTop="true"
+            android:layout_margin="16pt"
+            android:background="@android:color/white"
+            android:text="@string/select_interesting_topic" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/companyRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="500dp" />
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/demoButton"
+            android:layout_below="@+id/selectInterestingTopic"
+            android:layout_marginLeft="16pt"
+            android:layout_marginRight="16pt" />
 
         <Button
             android:id="@+id/demoButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="button" />
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="16pt"
+            android:text="@string/save" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </layout>

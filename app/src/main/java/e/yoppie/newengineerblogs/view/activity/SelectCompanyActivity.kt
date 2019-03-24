@@ -5,7 +5,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
 import com.facebook.stetho.Stetho
 import com.jakewharton.rxbinding2.support.v7.widget.scrollEvents
 import com.jakewharton.rxbinding2.view.clicks
@@ -27,7 +27,7 @@ class SelectCompanyActivity : AppCompatActivity(), OnCompanyRecyclerListener {
         val viewModel = ViewModelProviders.of(this).get(SelectCompanyViewModel::class.java)
         binding.viewModel = viewModel
 
-        val gridLayoutManager = GridLayoutManager(this, 2)
+        val gridLayoutManager = LinearLayoutManager(this)
         binding.companyRecyclerView.layoutManager = gridLayoutManager
         binding.companyRecyclerView.adapter = CompanyRecyclerAdapter(this, viewModel, this)
 
