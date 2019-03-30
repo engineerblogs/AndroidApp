@@ -19,12 +19,13 @@ class MainActivity : AppCompatActivity() {
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         val viewModel = ViewModelProviders.of(this).get(CompanyViewModel::class.java)
 
-        // todo: このifはテストするために入れている　最後にはずす
-        if (viewModel.categoryList.value!!.isEmpty()) {
-            showSelectCompany()
-        }
-
-        // viewModel.getSavedCompanyList(this)
+        viewModel.getSavedCompanyList(
+                {
+                    val intent = Intent(this, SelectCompanyActivity::class.java)
+                    startActivity(intent)
+                },
+                this
+        )
 
         binding.viewModel = viewModel
         binding.mainViewPager.offscreenPageLimit = 5
@@ -33,10 +34,5 @@ class MainActivity : AppCompatActivity() {
         binding.mainViewPager.adapter = adapter
         binding.mainTabLayout.tabMode = TabLayout.MODE_SCROLLABLE
         binding.mainTabLayout.setupWithViewPager(binding.mainViewPager)
-    }
-
-    private fun showSelectCompany() {
-        val intent = Intent(this, SelectCompanyActivity::class.java)
-        startActivity(intent)
     }
 }

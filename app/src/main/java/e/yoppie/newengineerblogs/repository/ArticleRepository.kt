@@ -11,5 +11,7 @@ class ArticleRepository: BaseRepository() {
         return db.companyDao().findAll()
     }
 
-
+    fun getAllCategoryArticles(deviceId: String, limit: String) = this.retrofit
+            .create(ArticleApiInterface::class.java)
+            .getArticleList(deviceId, limit)
 }

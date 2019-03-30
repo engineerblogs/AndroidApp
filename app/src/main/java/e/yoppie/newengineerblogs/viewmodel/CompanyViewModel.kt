@@ -9,19 +9,14 @@ import e.yoppie.newengineerblogs.model.data.Article
 import e.yoppie.newengineerblogs.model.data.Category
 import e.yoppie.newengineerblogs.model.room.entity.CompanyEntity
 import e.yoppie.newengineerblogs.repository.ArticleRepository
+import e.yoppie.newengineerblogs.view.activity.MainActivity
 import io.reactivex.Completable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class CompanyViewModel : ViewModel() {
 
-    var categoryList: MutableLiveData<List<Category>>
+    lateinit var categoryList: MutableLiveData<List<Category>>
     private var articleRepository: ArticleRepository = ArticleRepository()
-
-    init {
-        categoryList = loadAllCategoryArticles()
-    }
 
     private fun loadAllCategoryArticles(): MutableLiveData<List<Category>> {
         val articles = mutableListOf(
@@ -49,10 +44,11 @@ class CompanyViewModel : ViewModel() {
         return mutableLiveData
 
         // todo: modelLayerから取得する処理に修正せよ
+
     }
 
     @SuppressLint("CheckResult")
-    fun getSavedCompanyList(context: Context){
+    fun getSavedCompanyList(invokeMethod: ()->Unit, context: Context) {
         var localCompanyEntitiyList: List<CompanyEntity> = mutableListOf()
         Completable
                 .fromAction {
@@ -60,7 +56,11 @@ class CompanyViewModel : ViewModel() {
                 }
                 .subscribeOn(Schedulers.io())
                 .subscribe {
+                    if(localCompanyEntitiyList.isEmpty()){
+                        invokeMethod()
+                    }else{
+                        categoryList = loadAllCategoryArticles()
+                    }
                 }
     }
-
 }
