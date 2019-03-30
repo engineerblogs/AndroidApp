@@ -43,16 +43,15 @@ class CompanyRecyclerAdapter(private val context: AppCompatActivity, viewModel: 
             setVariable(1, selectCompanyItemViewModel)
             executePendingBindings()
         }
-
         holder.itemView
                 .clicks()
                 .subscribe {
                     val companyId = items[position].id
                     if (this.companyIdList.contains(companyId)) {
-                        holder.itemView.setBackgroundColor(Color.WHITE)
+                        holder.itemView.setBackgroundResource(R.color.colorNoSelectBackGround)
                         this.companyIdList.remove(companyId)
                     } else {
-                        holder.itemView.setBackgroundColor(Color.DKGRAY)
+                        holder.itemView.setBackgroundResource(R.color.colorSelectBackGround)
                         this.companyIdList.add(companyId)
                     }
                     onCompanyRecyclerListener.onRecyclerViewClick(items[position].id)

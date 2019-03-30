@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             showSelectCompany()
         }
 
-        //viewModel.getSavedCompanyList(this)
+        // viewModel.getSavedCompanyList(this)
 
         binding.viewModel = viewModel
         binding.mainViewPager.offscreenPageLimit = 5
