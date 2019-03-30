@@ -31,10 +31,12 @@ class SelectCompanyActivity : AppCompatActivity(), OnCompanyRecyclerListener {
         binding.companyRecyclerView.layoutManager = gridLayoutManager
         binding.companyRecyclerView.adapter = CompanyRecyclerAdapter(this, viewModel, this)
 
-        binding.demoButton
+        binding.companySelectButton
                 .clicks()
                 .filter { companyIdList.size > 0 }
-                .subscribe { viewModel.saveSelectCompanyList(companyIdList, applicationContext) }
+                .subscribe {
+                     viewModel.saveSelectCompanyList(companyIdList, applicationContext)
+                }
 
         binding.companyRecyclerView
                 .scrollEvents()

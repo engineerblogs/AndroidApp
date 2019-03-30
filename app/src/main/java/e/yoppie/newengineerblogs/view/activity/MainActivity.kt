@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         val viewModel = ViewModelProviders.of(this).get(CompanyViewModel::class.java)
 
         // todo: このifはテストするために入れている　最後にはずす
-        if (!viewModel.categoryList.value!!.isEmpty()) {
+        if (viewModel.categoryList.value!!.isEmpty()) {
             showSelectCompany()
         }
 

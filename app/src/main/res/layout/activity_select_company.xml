@@ -27,13 +27,13 @@
             android:id="@+id/companyRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/demoButton"
+            android:layout_above="@+id/companySelectButton"
             android:layout_below="@+id/selectInterestingTopic"
             android:layout_marginLeft="16pt"
             android:layout_marginRight="16pt" />
 
         <Button
-            android:id="@+id/demoButton"
+            android:id="@+id/companySelectButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
