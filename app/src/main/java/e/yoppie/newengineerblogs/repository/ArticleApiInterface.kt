@@ -7,5 +7,8 @@ import retrofit2.http.Query
 
 interface ArticleApiInterface {
     @GET("test/articleList")
-    fun getArticleList(@Query("deviceId") deviceId: String, @Query("limit") limit: String): Call<Companies>
+    fun getArticleList(
+            @Query("deviceId") deviceId: String,
+            @Query("limit") limit: String
+    ): Call<Companies>
 }
