@@ -7,6 +7,7 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +30,7 @@ class CategoryFragment : Fragment(), OnRecyclerListener {
         val position = arguments!!.getInt("position")
         val categoryViewModel = ViewModelProviders.of(activity!!).get(CompanyViewModel::class.java)
         val articleViewModel = ViewModelProviders.of(this).get(position.toString(), ArticleViewModel::class.java)
-        articleViewModel.set(categoryViewModel.categoryList.value!![position].articleList)
+        articleViewModel.set(categoryViewModel.categoryListData.value!![position].articles)
         this.articleViewModel = articleViewModel
     }
 
@@ -41,10 +42,11 @@ class CategoryFragment : Fragment(), OnRecyclerListener {
         binding.categoryFragmentSwipeRefreshLayout
                 .refreshes()
                 .subscribe {
-                    articleViewModel.loadArticles()
-                    if (binding.categoryFragmentSwipeRefreshLayout.isRefreshing) {
-                        binding.categoryFragmentSwipeRefreshLayout.isRefreshing = false
-                    }
+//                    articleViewModel.loadArticles()
+//                    if (binding.categoryFragmentSwipeRefreshLayout.isRefreshing) {
+//                        binding.categoryFragmentSwipeRefreshLayout.isRefreshing = false
+//                    }
+                    Log.d("yoshiya_debug", "loadArticles")
                 }
 
         binding = setArticleRecyclerView(binding)
@@ -59,7 +61,10 @@ class CategoryFragment : Fragment(), OnRecyclerListener {
         binding.articleRecyclerView
                 .scrollEvents()
                 .filter { linearLayoutManager.itemCount - 1 <= linearLayoutManager.findLastVisibleItemPosition() }
-                .subscribe { articleViewModel.loadMore() }
+                .subscribe {
+                    // articleViewModel.loadMore()
+                    Log.d("yoshiya_devug", "loadMore")
+                }
         return binding
     }
 

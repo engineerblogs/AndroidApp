@@ -18,21 +18,20 @@ class MainActivity : AppCompatActivity() {
 
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         val viewModel = ViewModelProviders.of(this).get(CompanyViewModel::class.java)
+        binding.viewModel = viewModel
+        binding.mainViewPager.offscreenPageLimit = 5
+        val adapter = CategoryFragmentPagerAdapter(supportFragmentManager, viewModel)
+        binding.mainViewPager.adapter = adapter
+        binding.mainTabLayout.tabMode = TabLayout.MODE_SCROLLABLE
+        binding.mainTabLayout.setupWithViewPager(binding.mainViewPager)
 
         viewModel.getSavedCompanyList(
                 {
                     val intent = Intent(this, SelectCompanyActivity::class.java)
                     startActivity(intent)
                 },
-                this
+                this,
+                adapter
         )
-
-        binding.viewModel = viewModel
-        binding.mainViewPager.offscreenPageLimit = 5
-        val adapter = CategoryFragmentPagerAdapter(supportFragmentManager, viewModel)
-
-        binding.mainViewPager.adapter = adapter
-        binding.mainTabLayout.tabMode = TabLayout.MODE_SCROLLABLE
-        binding.mainTabLayout.setupWithViewPager(binding.mainViewPager)
     }
 }

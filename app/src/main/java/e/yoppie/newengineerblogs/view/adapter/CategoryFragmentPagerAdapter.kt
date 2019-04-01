@@ -1,6 +1,5 @@
 package e.yoppie.newengineerblogs.view.adapter
 
-import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
@@ -10,7 +9,7 @@ import e.yoppie.newengineerblogs.viewmodel.CompanyViewModel
 
 class CategoryFragmentPagerAdapter(fm: FragmentManager?, viewModel: CompanyViewModel) : FragmentPagerAdapter(fm) {
 
-    private var categoryList: List<Category>? = viewModel.categoryList.value
+    private var categoryList: List<Category>? = viewModel.categoryListData.value
 
     override fun getItem(position: Int): Fragment {
         return CategoryFragment.newInstance(position)
