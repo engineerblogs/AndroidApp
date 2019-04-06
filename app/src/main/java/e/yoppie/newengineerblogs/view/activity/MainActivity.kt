@@ -34,9 +34,11 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = viewModel
         binding.mainViewPager.offscreenPageLimit = 5
         val adapter = CategoryFragmentPagerAdapter(supportFragmentManager, viewModel)
+        adapter.destroyTarget(binding.mainViewPager, 0)
         binding.mainViewPager.adapter = adapter
         binding.mainTabLayout.tabMode = TabLayout.MODE_SCROLLABLE
         binding.mainTabLayout.setupWithViewPager(binding.mainViewPager)
+
         return viewModel
     }
 }

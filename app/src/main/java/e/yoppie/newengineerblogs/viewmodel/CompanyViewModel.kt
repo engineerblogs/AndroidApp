@@ -45,7 +45,7 @@ class CompanyViewModel : ViewModel() {
     }
 
     @SuppressLint("CheckResult")
-    fun getSavedCompanyList(intentMethod: () -> Unit, reloadTab: () -> Unit, context: Context) {
+    fun getSavedCompanyList(transition: () -> Unit, reloadTab: () -> Unit, context: Context) {
         var localCompanyEntitiyList: List<CompanyEntity> = mutableListOf()
         Completable
                 .fromAction {
@@ -54,7 +54,7 @@ class CompanyViewModel : ViewModel() {
                 .subscribeOn(Schedulers.io())
                 .subscribe {
                     if (localCompanyEntitiyList.isEmpty()) {
-                        intentMethod()
+                        transition()
                     } else {
                         loadAllArticles(reloadTab)
                     }
