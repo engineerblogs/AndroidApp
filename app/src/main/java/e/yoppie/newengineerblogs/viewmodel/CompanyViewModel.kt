@@ -9,7 +9,6 @@ import e.yoppie.newengineerblogs.model.data.Article
 import e.yoppie.newengineerblogs.model.data.Category
 import e.yoppie.newengineerblogs.model.room.entity.CompanyEntity
 import e.yoppie.newengineerblogs.repository.ArticleRepository
-import e.yoppie.newengineerblogs.view.adapter.CategoryFragmentPagerAdapter
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -31,22 +30,22 @@ class CompanyViewModel : ViewModel() {
     }
 
     @SuppressLint("CheckResult")
-    private fun loadTest(adapter: CategoryFragmentPagerAdapter) {
+    private fun loadAllArticles(reloadTab: () -> Unit) {
         articleRepository.getAllCategoryArticles("111", "5")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ res ->
-                    res.categories.forEach {
-                        Log.d("yoshiya_debug", it.name)
-                    }
-                    categoryListData.postValue(res.categories)
+                    val mutableLiveData = MutableLiveData<MutableList<Category>>()
+                    mutableLiveData.value = res.categories
+                    categoryListData = mutableLiveData
+                    reloadTab()
                 }, { error ->
                     Log.d("yoshiya_debug", error.message)
                 })
     }
 
     @SuppressLint("CheckResult")
-    fun getSavedCompanyList(invokeMethod: () -> Unit, context: Context, adapter: CategoryFragmentPagerAdapter) {
+    fun getSavedCompanyList(intentMethod: () -> Unit, reloadTab: () -> Unit, context: Context) {
         var localCompanyEntitiyList: List<CompanyEntity> = mutableListOf()
         Completable
                 .fromAction {
@@ -55,9 +54,9 @@ class CompanyViewModel : ViewModel() {
                 .subscribeOn(Schedulers.io())
                 .subscribe {
                     if (localCompanyEntitiyList.isEmpty()) {
-                        invokeMethod()
+                        intentMethod()
                     } else {
-                        loadTest(adapter)
+                        loadAllArticles(reloadTab)
                     }
                 }
     }

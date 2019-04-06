@@ -17,6 +17,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        val viewModel = setBinding(binding)
+
+        viewModel.getSavedCompanyList(
+                {
+                    val intent = Intent(this, SelectCompanyActivity::class.java)
+                    startActivity(intent)
+                },
+                { setBinding(binding) },
+                this
+        )
+    }
+
+    private fun setBinding(binding: ActivityMainBinding): CompanyViewModel {
         val viewModel = ViewModelProviders.of(this).get(CompanyViewModel::class.java)
         binding.viewModel = viewModel
         binding.mainViewPager.offscreenPageLimit = 5
@@ -24,14 +37,6 @@ class MainActivity : AppCompatActivity() {
         binding.mainViewPager.adapter = adapter
         binding.mainTabLayout.tabMode = TabLayout.MODE_SCROLLABLE
         binding.mainTabLayout.setupWithViewPager(binding.mainViewPager)
-
-        viewModel.getSavedCompanyList(
-                {
-                    val intent = Intent(this, SelectCompanyActivity::class.java)
-                    startActivity(intent)
-                },
-                this,
-                adapter
-        )
+        return viewModel
     }
 }
