@@ -17,7 +17,6 @@
         <activity android:name=".view.activity.SelectCompanyActivity" />
         <activity
             android:name=".view.activity.ArticleActivity"
-            android:label="@string/title_activity_article"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".view.activity.MainActivity">
             <intent-filter>
