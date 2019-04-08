@@ -3,6 +3,7 @@ package e.yoppie.newengineerblogs.view.activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
+import android.view.MenuItem
 import android.webkit.WebViewClient
 import e.yoppie.newengineerblogs.R
 import kotlinx.android.synthetic.main.activity_article.*
@@ -14,6 +15,7 @@ class ArticleActivity : AppCompatActivity() {
         setContentView(R.layout.activity_article)
         setSupportActionBar(articleToolBar)
         articleToolBar.title = intent.getStringExtra("title")
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         articleWebView.webViewClient = WebViewClient()
         articleWebView.loadUrl(intent.getStringExtra("url"))
@@ -22,6 +24,16 @@ class ArticleActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.article_menu, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item!!.itemId) {
+            android.R.id.home -> {
+                finish()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
 }

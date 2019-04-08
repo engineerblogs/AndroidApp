@@ -20,8 +20,7 @@
                 android:id="@+id/articleToolBar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:title="@string/title"
-                app:titleTextColor="@android:color/white" />
+                app:title="@string/title" />
 
         </android.support.design.widget.AppBarLayout>
 
