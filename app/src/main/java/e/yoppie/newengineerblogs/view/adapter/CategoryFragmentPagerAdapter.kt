@@ -2,15 +2,13 @@ package e.yoppie.newengineerblogs.view.adapter
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
-import android.support.v4.view.ViewPager
+import android.support.v4.app.FragmentStatePagerAdapter
 import android.util.Log
-import android.view.ViewGroup
 import e.yoppie.newengineerblogs.model.data.Category
 import e.yoppie.newengineerblogs.view.fragment.CategoryFragment
 import e.yoppie.newengineerblogs.viewmodel.CompanyViewModel
 
-class CategoryFragmentPagerAdapter(fm: FragmentManager?, viewModel: CompanyViewModel) : FragmentPagerAdapter(fm) {
+class CategoryFragmentPagerAdapter(fm: FragmentManager?, viewModel: CompanyViewModel) : FragmentStatePagerAdapter(fm) {
 
     private var categoryList: List<Category>? = viewModel.categoryListData.value
 
@@ -27,16 +25,5 @@ class CategoryFragmentPagerAdapter(fm: FragmentManager?, viewModel: CompanyViewM
         Log.d("yoshiya_debug", "adapter_item2/$position")
         Log.d("yoshiya_debug", "adapter_title/" + categoryList!![position].name)
         return categoryList!![position].name
-    }
-
-    override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-        super.destroyItem(container, position, `object`)
-    }
-
-    fun destroyTarget(pager: ViewPager, position: Int) {
-        if (position < count) {
-            val target = this.instantiateItem(pager, position)
-            destroyItem(pager, position, target)
-        }
     }
 }
