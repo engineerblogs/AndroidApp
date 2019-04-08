@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,29 +9,50 @@
             type="e.yoppie.newengineerblogs.viewmodel.ArticleItemViewModel" />
     </data>
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/articleCardView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp">
+        android:layout_height="112pt"
+        android:background="@drawable/border_bottom">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="80pt"
+            android:layout_margin="16pt">
+
+            <ImageView
+                android:id="@+id/companyImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                app:imageUrl="@{viewModel.thumbnail}" />
 
             <TextView
                 android:id="@+id/articleTitleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="12pt"
+                android:layout_toEndOf="@+id/companyImageView"
                 android:text="@{viewModel.title}" />
 
             <TextView
                 android:id="@+id/articleAuthorTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="12pt"
+                android:layout_toEndOf="@+id/companyImageView"
                 android:text="@{viewModel.author}" />
-        </LinearLayout>
 
-    </android.support.v7.widget.CardView>
+            <TextView
+                android:id="@+id/articlePublishedDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="12pt"
+                android:text="@{viewModel.publishedDate}" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
 </layout>
