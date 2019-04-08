@@ -63,7 +63,7 @@ class CategoryFragment : Fragment(), OnRecyclerListener {
                 .filter { linearLayoutManager.itemCount - 1 <= linearLayoutManager.findLastVisibleItemPosition() }
                 .subscribe {
                     // articleViewModel.loadMore()
-                    Log.d("yoshiya_devug", "loadMore")
+                    Log.d("yoshiya_debug", "loadMore")
                 }
         return binding
     }
@@ -78,9 +78,10 @@ class CategoryFragment : Fragment(), OnRecyclerListener {
         }
     }
 
-    override fun onRecyclerViewClick(url: String) {
+    override fun onRecyclerViewClick(url: String, title: String) {
         val intent = Intent(this.context, ArticleActivity::class.java)
         intent.putExtra("url", url)
+        intent.putExtra("title", title)
         startActivity(intent)
     }
 }

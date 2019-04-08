@@ -1,30 +1,25 @@
 package e.yoppie.newengineerblogs.view.activity
 
-import android.annotation.SuppressLint
+import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.webkit.WebViewClient
-import com.jakewharton.rxbinding2.support.v7.widget.itemClicks
 import e.yoppie.newengineerblogs.R
-
-import kotlinx.android.synthetic.main.activity_article.*
+import e.yoppie.newengineerblogs.databinding.ActivityArticleBinding
 
 class ArticleActivity : AppCompatActivity() {
 
-    @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_article)
-        setSupportActionBar(toolbar)
 
-        val url = intent.getStringExtra("url")
-        articleWebView.webViewClient = WebViewClient()
-        articleWebView.loadUrl(url)
+        val binding = DataBindingUtil.setContentView<ActivityArticleBinding>(this, R.layout.activity_article)
 
-        // rxbinding-appcompat-v7-kotlin
-        toolbar.itemClicks().subscribe{ Log.d("debug", "itemClicks") }
+        Log.d("yoshiya_debug", intent.getStringExtra("title"))
+
+        binding.articleWebView.webViewClient = WebViewClient()
+        binding.articleWebView.loadUrl(intent.getStringExtra("url"))
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

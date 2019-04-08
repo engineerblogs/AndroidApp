@@ -1,5 +1,5 @@
 package e.yoppie.newengineerblogs.listener
 
 interface OnRecyclerListener {
-    fun onRecyclerViewClick(url: String)
+    fun onRecyclerViewClick(url: String, title: String)
 }

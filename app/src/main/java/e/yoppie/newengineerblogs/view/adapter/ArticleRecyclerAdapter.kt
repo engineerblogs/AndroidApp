@@ -38,7 +38,7 @@ class ArticleRecyclerAdapter(private val context: Fragment, viewModel: ArticleVi
             executePendingBindings()
         }
         holder.itemView.setOnClickListener {
-            onRecyclerListener.onRecyclerViewClick(items[position].url)
+            onRecyclerListener.onRecyclerViewClick(items[position].url, items[position].title)
         }
     }
 
