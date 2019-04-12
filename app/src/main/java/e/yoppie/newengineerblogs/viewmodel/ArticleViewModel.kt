@@ -42,11 +42,22 @@ class ArticleViewModel : ViewModel() {
                 })
     }
 
-//    fun loadMore() {
+    @SuppressLint("CheckResult")
+    fun loadMore(companyId: String) {
+        articleRepository.getCategoryArticles(companyId, articleList.size.toString())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ res ->
+                    this.articleList.addAll(res.articles)
+                    this.articleListLiveData.postValue(this.articleList)
+                }, { error ->
+                    Log.d("yoshiya_debug", error.message)
+                })
+
 //        val article = Article(31, "たいとる31", "執筆者31", "https://developers.gnavi.co.jp/entry/slim-framework/")
 //        if (this.articleList.last().id != article.id) {
 //            this.articleList.add(article)
 //            this.articleListLiveData.postValue(this.articleList)
 //        }
-//    }
+    }
 }

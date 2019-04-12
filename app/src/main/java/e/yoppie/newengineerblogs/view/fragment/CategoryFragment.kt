@@ -44,12 +44,11 @@ class CategoryFragment : Fragment(), OnRecyclerListener {
         binding.categoryFragmentSwipeRefreshLayout
                 .refreshes()
                 .subscribe {
-                    // articleViewModel.loadArticles("003", "10")
-                    articleViewModel.loadArticles(companyId, "10")
+                    articleViewModel.loadArticles("003", "0")
+//                    articleViewModel.loadArticles(companyId, "0")
                     if (binding.categoryFragmentSwipeRefreshLayout.isRefreshing) {
                         binding.categoryFragmentSwipeRefreshLayout.isRefreshing = false
                     }
-                    Log.d("yoshiya_debug", "loadArticles")
                 }
 
         binding = setArticleRecyclerView(binding)
@@ -65,8 +64,7 @@ class CategoryFragment : Fragment(), OnRecyclerListener {
                 .scrollEvents()
                 .filter { linearLayoutManager.itemCount - 1 <= linearLayoutManager.findLastVisibleItemPosition() }
                 .subscribe {
-                    // articleViewModel.loadMore()
-                    Log.d("yoshiya_debug", "loadMore")
+                    //articleViewModel.loadMore(companyId)
                 }
         return binding
     }
