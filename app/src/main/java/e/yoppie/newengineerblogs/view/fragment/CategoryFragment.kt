@@ -24,11 +24,13 @@ import e.yoppie.newengineerblogs.viewmodel.CompanyViewModel
 class CategoryFragment : Fragment(), OnRecyclerListener {
 
     private lateinit var articleViewModel: ArticleViewModel
+    private lateinit var companyId: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val position = arguments!!.getInt("position")
         val categoryViewModel = ViewModelProviders.of(activity!!).get(CompanyViewModel::class.java)
+        this.companyId = categoryViewModel.categoryListData.value!![position].id
         val articleViewModel = ViewModelProviders.of(this).get(position.toString(), ArticleViewModel::class.java)
         articleViewModel.set(categoryViewModel.categoryListData.value!![position].articles)
         this.articleViewModel = articleViewModel
@@ -42,10 +44,11 @@ class CategoryFragment : Fragment(), OnRecyclerListener {
         binding.categoryFragmentSwipeRefreshLayout
                 .refreshes()
                 .subscribe {
-//                    articleViewModel.loadArticles()
-//                    if (binding.categoryFragmentSwipeRefreshLayout.isRefreshing) {
-//                        binding.categoryFragmentSwipeRefreshLayout.isRefreshing = false
-//                    }
+                    // articleViewModel.loadArticles("003", "10")
+                    articleViewModel.loadArticles(companyId, "10")
+                    if (binding.categoryFragmentSwipeRefreshLayout.isRefreshing) {
+                        binding.categoryFragmentSwipeRefreshLayout.isRefreshing = false
+                    }
                     Log.d("yoshiya_debug", "loadArticles")
                 }
 

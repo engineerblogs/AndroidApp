@@ -12,6 +12,10 @@ class ArticleRepository: BaseRepository() {
     }
 
     fun getAllCategoryArticles(deviceId: String, limit: String) = this.retrofit
-            .create(ArticleApiInterface::class.java)
+            .create(CategoryArticlesApiInterface::class.java)
             .getArticleList(deviceId, limit)
+
+    fun getCategoryArticles(companyId: String, offset: String) = this.retrofit
+            .create(ArticlesApiInterface::class.java)
+            .getArticleList(companyId, offset)
 }

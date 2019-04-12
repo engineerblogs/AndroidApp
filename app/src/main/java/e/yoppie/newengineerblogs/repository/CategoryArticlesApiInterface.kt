@@ -5,7 +5,7 @@ import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface ArticleApiInterface {
+interface CategoryArticlesApiInterface {
     @GET("test/articleList")
     fun getArticleList(
             @Query("deviceId") deviceId: String,
