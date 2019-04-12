@@ -17,6 +17,7 @@ class CompanyViewModel : ViewModel() {
 
     var categoryListData: MutableLiveData<MutableList<Category>>
     private var articleRepository: ArticleRepository = ArticleRepository()
+    var isLoad: Boolean = false
 
     init {
         val mutableLiveData = MutableLiveData<MutableList<Category>>()
@@ -39,6 +40,7 @@ class CompanyViewModel : ViewModel() {
                     mutableLiveData.value = res.categories
                     categoryListData = mutableLiveData
                     reloadTab()
+                    this.isLoad = false
                 }, { error ->
                     Log.d("yoshiya_debug", error.message)
                 })

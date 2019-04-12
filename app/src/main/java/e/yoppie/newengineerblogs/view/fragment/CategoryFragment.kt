@@ -28,13 +28,8 @@ class CategoryFragment : Fragment(), OnRecyclerListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val position = arguments!!.getInt("position")
-        Log.d("yoshiya_debug", position.toString())
         val categoryViewModel = ViewModelProviders.of(activity!!).get(CompanyViewModel::class.java)
         val articleViewModel = ViewModelProviders.of(this).get(position.toString(), ArticleViewModel::class.java)
-//        categoryViewModel.categoryListData.value!!.forEach {
-//            Log.d("yoshiya_debug", it.name)
-//        }
-//        articleViewModel.set(categoryViewModel.categoryListData.value!![position].articles)
         articleViewModel.set(categoryViewModel.categoryListData.value!![position].articles)
         this.articleViewModel = articleViewModel
     }

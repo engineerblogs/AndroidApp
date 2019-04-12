@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,18 +18,26 @@ class AllArticleFragment : Fragment() {
     private lateinit var viewModel: CompanyViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d("yoshiya_debug", "onCreate")
         super.onCreate(savedInstanceState)
         this.viewModel = ViewModelProviders.of(activity!!).get(CompanyViewModel::class.java)
+        this.viewModel.isLoad = true
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        Log.d("yoshiya_debug", "onCreateView")
         super.onCreateView(inflater, container, savedInstanceState)
         return inflater.inflate(R.layout.all_article_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
+        Log.d("yoshiya_debug", "onActivityCreated")
         super.onActivityCreated(savedInstanceState)
-        this.viewModel.loadAllArticles { setBinding() }
+        if(this.viewModel.isLoad){
+            this.viewModel.loadAllArticles { setBinding() }
+        }else{
+            setBinding()
+        }
     }
 
     private fun setBinding() {

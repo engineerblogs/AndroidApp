@@ -7,15 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".view.activity.HomeActivity">
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
+    <fragment
+        android:id="@+id/navHostFragment"
+        android:name="e.yoppie.newengineerblogs.view.fragment.CustomNavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/custom_navigation" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottomNavigation"
