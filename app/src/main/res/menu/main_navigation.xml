@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/allArticleItem"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:title="@string/title" />
+
+    <item
+        android:id="@+id/bookmarkItem"
+        android:icon="@android:drawable/stat_notify_more"
+        android:title="@string/title" />
+</menu>

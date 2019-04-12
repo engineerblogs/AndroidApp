@@ -26,11 +26,11 @@ class CompanyViewModel : ViewModel() {
         mutableLiveData.value = mutableListOf(
                 Category("yoyo", "100", articles)
         )
-        categoryListData = mutableLiveData
+        this.categoryListData = mutableLiveData
     }
 
     @SuppressLint("CheckResult")
-    private fun loadAllArticles(reloadTab: () -> Unit) {
+    fun loadAllArticles(reloadTab: () -> Unit) {
         articleRepository.getAllCategoryArticles("111", "5")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

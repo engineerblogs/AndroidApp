@@ -9,7 +9,10 @@ object Util {
     @BindingAdapter("imageUrl")
     fun ImageView.loadImage(url: String?) {
         if(!url.isNullOrBlank()) {
-            Glide.with(this.context).load(url).into(this)
+            Glide.with(this.context)
+                    .load(url)
+                    .error(android.R.drawable.btn_star_big_on)
+                    .into(this)
         }
     }
 }

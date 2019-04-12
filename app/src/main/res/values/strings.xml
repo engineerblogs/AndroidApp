@@ -1,7 +1,11 @@
 <resources>
-    <string name="app_name">NewEngineerBlogs</string>
+    <string name="app_name">Engineer Blogs</string>
     <string name="title_activity_article">ArticleActivity</string>
     <string name="select_interesting_topic">興味のあるトピックを追加してください</string>
     <string name="save">保存</string>
     <string name="title">タイトル</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
