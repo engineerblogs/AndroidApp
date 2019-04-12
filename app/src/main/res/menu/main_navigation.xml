@@ -3,10 +3,10 @@
     <item
         android:id="@+id/allArticleItem"
         android:icon="@android:drawable/ic_menu_sort_by_size"
-        android:title="@string/title" />
+        android:title="@string/blogs" />
 
     <item
         android:id="@+id/bookmarkItem"
         android:icon="@android:drawable/stat_notify_more"
-        android:title="@string/title" />
+        android:title="@string/bookmark" />
 </menu>
