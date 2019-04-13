@@ -7,7 +7,7 @@ import android.content.Context
 import e.yoppie.newengineerblogs.model.room.dao.CompanyDao
 import e.yoppie.newengineerblogs.model.room.entity.CompanyEntity
 
-@Database(entities = [CompanyEntity::class], version = 1)
+@Database(entities = [CompanyEntity::class], version = 4)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun companyDao(): CompanyDao
 

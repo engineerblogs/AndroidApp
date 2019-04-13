@@ -35,7 +35,7 @@ class SelectCompanyActivity : AppCompatActivity(), OnCompanyRecyclerListener {
                 .clicks()
                 .filter { companyIdList.size > 0 }
                 .subscribe {
-                     viewModel.saveSelectCompanyList(companyIdList, applicationContext)
+                     viewModel.saveSelectCompanyList(companyIdList, this)
                 }
 
         binding.companyRecyclerView

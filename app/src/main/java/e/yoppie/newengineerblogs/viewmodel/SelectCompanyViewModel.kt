@@ -8,7 +8,7 @@ import android.content.Intent
 import android.util.Log
 import e.yoppie.newengineerblogs.model.data.Company
 import e.yoppie.newengineerblogs.repository.CompanyRepository
-import e.yoppie.newengineerblogs.view.activity.SelectCompanyActivity
+import e.yoppie.newengineerblogs.view.activity.HomeActivity
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -59,7 +59,7 @@ class SelectCompanyViewModel : ViewModel() {
                 }
                 .subscribeOn(Schedulers.io())
                 .subscribe {
-                    val intent = Intent(context, SelectCompanyActivity::class.java)
+                    val intent = Intent(context, HomeActivity::class.java)
                     context.startActivity(intent)
                 }
     }
