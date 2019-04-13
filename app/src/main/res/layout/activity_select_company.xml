@@ -21,7 +21,9 @@
             android:layout_alignParentTop="true"
             android:layout_margin="16pt"
             android:background="@android:color/white"
-            android:text="@string/select_interesting_topic" />
+            android:text="@string/select_interesting_topic"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/companyRecyclerView"

@@ -30,7 +30,8 @@
             android:layout_centerVertical="true"
             android:layout_margin="6pt"
             android:layout_toRightOf="@+id/companyImageView"
-            android:text="@{viewModel.name}" />
+            android:text="@{viewModel.name}"
+            android:textColor="@android:color/black" />
 
     </RelativeLayout>
 
