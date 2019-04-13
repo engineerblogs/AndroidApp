@@ -10,4 +10,5 @@
     <string name="title_notifications">Notifications</string>
     <string name="blogs">ブログ</string>
     <string name="bookmark">ブックマーク</string>
+    <string name="copy_url">URLコピー</string>
 </resources>

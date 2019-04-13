@@ -1,5 +1,8 @@
 package e.yoppie.newengineerblogs.service
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.databinding.BindingAdapter
 import android.widget.ImageView
 import com.bumptech.glide.Glide
@@ -14,5 +17,10 @@ object Util {
                     .error(android.R.drawable.btn_star_big_on)
                     .into(this)
         }
+    }
+
+    fun clipBoardCopy(context: Context, text: String){
+        val mManager: ClipboardManager = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        mManager.primaryClip = ClipData.newPlainText("label", text)
     }
 }

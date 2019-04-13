@@ -3,7 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/add"
-        android:title="add"
+        android:id="@+id/toolBarAddItem"
+        android:icon="@android:drawable/stat_notify_more"
+        android:title="@string/bookmark"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/toolBarUrlCopyItem"
+        android:icon="@android:drawable/stat_notify_more"
+        android:title="@string/copy_url"
         app:showAsAction="ifRoom" />
 </menu>
