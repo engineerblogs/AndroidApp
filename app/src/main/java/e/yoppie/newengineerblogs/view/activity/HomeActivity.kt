@@ -18,6 +18,7 @@ class HomeActivity : AppCompatActivity() {
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_home)
 
         val articleRepository = ArticleRepository()

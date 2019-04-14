@@ -14,7 +14,9 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:node="replace">
-        <activity android:name=".view.activity.HomeActivity">
+        <activity
+            android:name=".view.activity.HomeActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
