@@ -20,7 +20,7 @@ object Util {
     }
 
     fun clipBoardCopy(context: Context, text: String){
-        val mManager: ClipboardManager = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        mManager.primaryClip = ClipData.newPlainText("label", text)
+        val clipboardManager: ClipboardManager = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        clipboardManager.primaryClip = ClipData.newPlainText("label", text)
     }
 }

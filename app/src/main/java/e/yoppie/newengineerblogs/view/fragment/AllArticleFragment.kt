@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -33,9 +34,9 @@ class AllArticleFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         Log.d("yoshiya_debug", "onActivityCreated")
         super.onActivityCreated(savedInstanceState)
-        if(this.viewModel.isLoad){
+        if (this.viewModel.isLoad) {
             this.viewModel.loadAllArticles { setBinding() }
-        }else{
+        } else {
             setBinding()
         }
     }
