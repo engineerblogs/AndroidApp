@@ -14,6 +14,8 @@ import e.yoppie.newengineerblogs.databinding.ActivitySelectCompanyBinding
 import e.yoppie.newengineerblogs.listener.OnCompanyRecyclerListener
 import e.yoppie.newengineerblogs.view.adapter.CompanyRecyclerAdapter
 import e.yoppie.newengineerblogs.viewmodel.SelectCompanyViewModel
+import kotlinx.android.synthetic.main.activity_select_company.*
+import kotlinx.android.synthetic.main.all_article_fragment.*
 
 class SelectCompanyActivity : AppCompatActivity(), OnCompanyRecyclerListener {
     private var companyIdList: MutableList<String> = mutableListOf()
@@ -43,7 +45,7 @@ class SelectCompanyActivity : AppCompatActivity(), OnCompanyRecyclerListener {
                 .filter { gridLayoutManager.itemCount - 1 <= gridLayoutManager.findLastVisibleItemPosition() }
                 .subscribe { viewModel.loadMoreCompanyList() }
 
-        viewModel.loadFirstCompanyList()
+        viewModel.loadFirstCompanyList(binding.selectProgressbar)
     }
 
     override fun onRecyclerViewClick(companyId: String) {

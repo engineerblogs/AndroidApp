@@ -6,6 +6,7 @@ import android.arch.lifecycle.ViewModel
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import android.widget.ProgressBar
 import e.yoppie.newengineerblogs.model.data.Company
 import e.yoppie.newengineerblogs.repository.CompanyRepository
 import e.yoppie.newengineerblogs.view.activity.HomeActivity
@@ -31,13 +32,14 @@ class SelectCompanyViewModel : ViewModel() {
     }
 
     @SuppressLint("CheckResult")
-    fun loadFirstCompanyList() {
+    fun loadFirstCompanyList(selectProgressbar: ProgressBar) {
         companyRepository.getCompanyList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ res ->
                     this.companyList = res.companies
                     companyListData.postValue(res.companies)
+                    selectProgressbar.visibility = ProgressBar.INVISIBLE
                 }, { error ->
                     Log.d("yoshiya_debug", error.message)
                 })
