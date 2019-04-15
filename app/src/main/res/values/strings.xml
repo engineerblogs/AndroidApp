@@ -11,4 +11,6 @@
     <string name="blogs">ブログ</string>
     <string name="bookmark">ブックマーク</string>
     <string name="copy_url">URLコピー</string>
+    <string name="error_network">ネットワークに接続してください</string>
+    <string name="reload_network">再読み込み</string>
 </resources>

@@ -8,19 +8,31 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.jakewharton.rxbinding2.view.clicks
 import e.yoppie.newengineerblogs.R
 import e.yoppie.newengineerblogs.model.room.entity.CompanyEntity
 import e.yoppie.newengineerblogs.repository.ArticleRepository
+import e.yoppie.newengineerblogs.service.Util
 import io.reactivex.Completable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.not_net_connection.*
 
 class HomeActivity : AppCompatActivity() {
 
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTheme(R.style.AppTheme);
+        setTheme(R.style.AppTheme)
+
+        if (!Util.isNetConnection(this)) {
+            setContentView(R.layout.not_net_connection)
+            reloadNetworkButton
+                    .clicks()
+                    .subscribe { reload() }
+            return
+        }
+
         setContentView(R.layout.activity_home)
 
         val articleRepository = ArticleRepository()
@@ -42,7 +54,9 @@ class HomeActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.category_menu, menu)
+        if (Util.isNetConnection(this)) {
+            menuInflater.inflate(R.menu.category_menu, menu)
+        }
         return true
     }
 
@@ -55,5 +69,15 @@ class HomeActivity : AppCompatActivity() {
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun reload() {
+        overridePendingTransition(0, 0)
+        val intent = intent
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        finish()
+
+        overridePendingTransition(0, 0)
+        startActivity(intent)
     }
 }
