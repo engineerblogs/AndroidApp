@@ -5,29 +5,31 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.content.Context
 import android.util.Log
-import e.yoppie.newengineerblogs.model.data.Article
+import e.yoppie.newengineerblogs.di.diInterface.DaggerCompanyViewModelComponent
+import e.yoppie.newengineerblogs.di.diModule.CompanyViewModelModule
 import e.yoppie.newengineerblogs.model.data.Category
 import e.yoppie.newengineerblogs.model.room.entity.CompanyEntity
 import e.yoppie.newengineerblogs.repository.ArticleRepository
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
+@Suppress("DEPRECATION")
 class CompanyViewModel : ViewModel() {
 
-    var categoryListData: MutableLiveData<MutableList<Category>>
-    private var articleRepository: ArticleRepository = ArticleRepository()
+    @Inject
+    lateinit var categoryListData: MutableLiveData<MutableList<Category>>
+
     var isLoad: Boolean = false
+    private var articleRepository: ArticleRepository = ArticleRepository()
 
     init {
-        val mutableLiveData = MutableLiveData<MutableList<Category>>()
-        val articles = mutableListOf(
-                Article("100", "title", "thumnail", "url", "publishedDate", "author")
-        )
-        mutableLiveData.value = mutableListOf(
-                Category("yoyo", "100", articles)
-        )
-        this.categoryListData = mutableLiveData
+        val companyViewModelComponent = DaggerCompanyViewModelComponent
+                .builder()
+                .companyViewModelModule(CompanyViewModelModule())
+                .build()
+        companyViewModelComponent.inject(this)
     }
 
     @SuppressLint("CheckResult")
