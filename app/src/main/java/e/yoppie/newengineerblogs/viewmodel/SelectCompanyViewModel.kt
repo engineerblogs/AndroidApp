@@ -7,28 +7,33 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.widget.ProgressBar
+import e.yoppie.newengineerblogs.di.diInterface.DaggerSelectCompanyViewModelComponent
+import e.yoppie.newengineerblogs.di.diModule.SelectCompanyViewModelModule
 import e.yoppie.newengineerblogs.model.data.Company
 import e.yoppie.newengineerblogs.repository.CompanyRepository
 import e.yoppie.newengineerblogs.view.activity.HomeActivity
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
+@Suppress("DEPRECATION")
 class SelectCompanyViewModel : ViewModel() {
 
-    var companyListData: MutableLiveData<MutableList<Company>>
-    private var companyList: MutableList<Company>
+    @Inject
+    lateinit var companyListData: MutableLiveData<MutableList<Company>>
+
+    @Inject
+    lateinit var companyList: MutableList<Company>
+
     private var companyRepository: CompanyRepository = CompanyRepository()
 
     init {
-        val mutableLiveData = MutableLiveData<MutableList<Company>>()
-        // todo: サンプル画像などに変更
-        val companyList = mutableListOf(
-                Company("1", "ぐるなび", "https://images-na.ssl-images-amazon.com/images/I/61DAfypzYnL._SY445_.jpg")
-        )
-        mutableLiveData.value = companyList
-        this.companyList = companyList
-        companyListData = mutableLiveData
+        val selectCompanyViewModelComponent = DaggerSelectCompanyViewModelComponent
+                .builder()
+                .selectCompanyViewModelModule(SelectCompanyViewModelModule())
+                .build()
+        selectCompanyViewModelComponent.inject(this)
     }
 
     @SuppressLint("CheckResult")
