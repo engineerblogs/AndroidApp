@@ -14,25 +14,38 @@ import com.jakewharton.rxbinding2.support.v4.widget.refreshes
 import com.jakewharton.rxbinding2.support.v7.widget.scrollEvents
 import e.yoppie.newengineerblogs.R
 import e.yoppie.newengineerblogs.databinding.CategoryFragmentBinding
+import e.yoppie.newengineerblogs.di.diInterface.DaggerCategoryFragmentComponent
+import e.yoppie.newengineerblogs.di.diModule.CategoryFragmentModule
 import e.yoppie.newengineerblogs.listener.OnRecyclerListener
 import e.yoppie.newengineerblogs.view.activity.ArticleActivity
 import e.yoppie.newengineerblogs.view.adapter.ArticleRecyclerAdapter
 import e.yoppie.newengineerblogs.viewmodel.ArticleViewModel
 import e.yoppie.newengineerblogs.viewmodel.CompanyViewModel
+import javax.inject.Inject
 
+@Suppress("DEPRECATION")
 class CategoryFragment : Fragment(), OnRecyclerListener {
 
-    private lateinit var articleViewModel: ArticleViewModel
-    private lateinit var companyId: String
+    @Inject
+    lateinit var articleViewModel: ArticleViewModel
+
+    @Inject
+    lateinit var companyId: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val position = arguments!!.getInt("position")
         val categoryViewModel = ViewModelProviders.of(activity!!).get(CompanyViewModel::class.java)
-        this.companyId = categoryViewModel.categoryListData.value!![position].id
-        val articleViewModel = ViewModelProviders.of(this).get(position.toString(), ArticleViewModel::class.java)
-        articleViewModel.set(categoryViewModel.categoryListData.value!![position].articles)
-        this.articleViewModel = articleViewModel
+        val position = arguments!!.getInt("position")
+        val categoryFragmentComponent = DaggerCategoryFragmentComponent
+                .builder()
+                .categoryFragmentModule(CategoryFragmentModule(
+                        ViewModelProviders.of(activity!!).get(CompanyViewModel::class.java),
+                        position,
+                        this
+                ))
+                .build()
+        categoryFragmentComponent.inject(this)
+        this.articleViewModel.set(categoryViewModel.categoryListData.value!![position].articles)
     }
 
     @SuppressLint("CheckResult")
