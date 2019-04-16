@@ -10,18 +10,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import e.yoppie.newengineerblogs.R
+import e.yoppie.newengineerblogs.di.diInterface.DaggerAllArticleFragmentComponent
+import e.yoppie.newengineerblogs.di.diModule.AllArticleFragmentModule
 import e.yoppie.newengineerblogs.view.adapter.CategoryFragmentPagerAdapter
 import e.yoppie.newengineerblogs.viewmodel.CompanyViewModel
 import kotlinx.android.synthetic.main.all_article_fragment.*
+import javax.inject.Inject
 
 class AllArticleFragment : Fragment() {
 
-    private lateinit var viewModel: CompanyViewModel
+    @Inject
+    lateinit var viewModel: CompanyViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d("yoshiya_debug", "onCreate")
         super.onCreate(savedInstanceState)
-        this.viewModel = ViewModelProviders.of(activity!!).get(CompanyViewModel::class.java)
+        val allArticleFragmentComponent = DaggerAllArticleFragmentComponent
+                .builder()
+                .allArticleFragmentModule(AllArticleFragmentModule(activity))
+                .build()
+        allArticleFragmentComponent.inject(this)
         this.viewModel.isLoad = true
     }
 

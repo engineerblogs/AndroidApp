@@ -9,7 +9,7 @@ import androidx.navigation.fragment.FragmentNavigator
 
 @Navigator.Name("custom_fragment")
 class CustomNavigator(
-        private val context: Context,
+        context: Context,
         private val manager: FragmentManager,
         private val containerId: Int) : FragmentNavigator(context, manager, containerId) {
 
