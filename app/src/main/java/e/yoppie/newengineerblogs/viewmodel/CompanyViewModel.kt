@@ -34,7 +34,7 @@ class CompanyViewModel : ViewModel() {
 
     @SuppressLint("CheckResult")
     fun loadAllArticles(reloadTab: () -> Unit) {
-        articleRepository.getAllCategoryArticles("111", "5")
+        articleRepository.getAllCategoryArticles("111")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ res ->

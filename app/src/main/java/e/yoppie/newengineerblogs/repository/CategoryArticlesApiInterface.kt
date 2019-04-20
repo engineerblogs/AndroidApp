@@ -8,7 +8,6 @@ import retrofit2.http.Query
 interface CategoryArticlesApiInterface {
     @GET("test/articleList")
     fun getArticleList(
-            @Query("deviceId") deviceId: String,
-            @Query("limit") limit: String
+            @Query("userId") userId: String
     ): Observable<Categories>
 }

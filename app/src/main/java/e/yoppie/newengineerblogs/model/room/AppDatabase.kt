@@ -7,7 +7,7 @@ import android.content.Context
 import e.yoppie.newengineerblogs.model.room.dao.CompanyDao
 import e.yoppie.newengineerblogs.model.room.entity.CompanyEntity
 
-@Database(entities = [CompanyEntity::class], version = 5)
+@Database(entities = [CompanyEntity::class], version = 6)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun companyDao(): CompanyDao
 
@@ -19,6 +19,7 @@ abstract class AppDatabase : RoomDatabase() {
                 synchronized(AppDatabase::class) {
                     INSTANCE = Room.databaseBuilder(context.applicationContext,
                             AppDatabase::class.java, "AppDatabase.db")
+                            .fallbackToDestructiveMigration()
                             .build()
                 }
             }

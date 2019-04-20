@@ -9,3 +9,4 @@
 app/.gitignore
 app/proguard-rules.pro
 .idea/*.xml
+app/release/
