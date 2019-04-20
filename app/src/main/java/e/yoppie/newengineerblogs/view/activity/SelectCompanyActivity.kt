@@ -6,6 +6,7 @@ import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import com.crashlytics.android.Crashlytics
 import com.jakewharton.rxbinding2.support.v7.widget.scrollEvents
 import com.jakewharton.rxbinding2.view.clicks
 import e.yoppie.newengineerblogs.R
@@ -33,7 +34,8 @@ class SelectCompanyActivity : AppCompatActivity(), OnCompanyRecyclerListener {
                 .clicks()
                 .filter { companyIdList.size > 0 }
                 .subscribe {
-                     viewModel.saveSelectCompanyList(companyIdList, this)
+                    Crashlytics.getInstance().crash()
+                     // viewModel.saveSelectCompanyList(companyIdList, this)
                 }
 
         binding.companyRecyclerView
