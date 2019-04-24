@@ -88,7 +88,7 @@ class HomeActivity : AppCompatActivity() {
     private fun testFirebase() {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(this)
         val bundle = Bundle()
-        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "HomeActivity")
-        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
+        bundle.putString(FirebaseAnalytics.Param.METHOD, "HomeActivity")
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SIGN_UP, bundle)
     }
 }
