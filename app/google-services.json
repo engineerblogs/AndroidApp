@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "873280755225",
+    "firebase_url": "https://newengineerblogs.firebaseio.com",
+    "project_id": "newengineerblogs",
+    "storage_bucket": "newengineerblogs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873280755225:android:79a65c2bed27d835",
+        "android_client_info": {
+          "package_name": "e.yoppie.newengineerblogs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "873280755225-njdvp7td1l56nnttlc9dc92tevmqtel0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "e.yoppie.newengineerblogs",
+            "certificate_hash": "0f85e6637a715c5875f145cdc77396b6867a6471"
+          }
+        },
+        {
+          "client_id": "873280755225-1d40esinna6g07insuhk5jsl47itk3bu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAk0-HUq_V6oUvAZp-D-N-PaRAVFUV2nWw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "873280755225-1d40esinna6g07insuhk5jsl47itk3bu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

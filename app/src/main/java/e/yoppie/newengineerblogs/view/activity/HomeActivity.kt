@@ -4,10 +4,12 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.jakewharton.rxbinding2.view.clicks
 import e.yoppie.newengineerblogs.R
 import e.yoppie.newengineerblogs.model.room.entity.CompanyEntity
@@ -20,10 +22,14 @@ import kotlinx.android.synthetic.main.not_net_connection.*
 
 class HomeActivity : AppCompatActivity() {
 
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
+
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.AppTheme)
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this)
+        testFirebase()
 
         if (!Util.isNetConnection(this)) {
             setContentView(R.layout.not_net_connection)
@@ -79,5 +85,14 @@ class HomeActivity : AppCompatActivity() {
 
         overridePendingTransition(0, 0)
         startActivity(intent)
+    }
+
+    fun testFirebase(){
+        Log.d("yoppie_debug", "testFirebase()")
+        val bundle = Bundle()
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "01")
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "name")
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "content_type")
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
     }
 }

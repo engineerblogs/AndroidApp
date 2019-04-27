@@ -52,6 +52,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+    // Firebase
+    implementation 'com.google.firebase:firebase-core:16.0.8'
+
     // Design
     implementation 'com.android.support:design:28.0.0'
 
