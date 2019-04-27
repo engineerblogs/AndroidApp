@@ -4,12 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.google.firebase.analytics.FirebaseAnalytics
 import com.jakewharton.rxbinding2.view.clicks
 import e.yoppie.newengineerblogs.R
 import e.yoppie.newengineerblogs.model.room.entity.CompanyEntity
@@ -26,8 +24,6 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.AppTheme)
-
-        testFirebase()
 
         if (!Util.isNetConnection(this)) {
             setContentView(R.layout.not_net_connection)
@@ -83,12 +79,5 @@ class HomeActivity : AppCompatActivity() {
 
         overridePendingTransition(0, 0)
         startActivity(intent)
-    }
-
-    private fun testFirebase() {
-        val firebaseAnalytics = FirebaseAnalytics.getInstance(this)
-        val bundle = Bundle()
-        bundle.putString(FirebaseAnalytics.Param.METHOD, "HomeActivity")
-        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SIGN_UP, bundle)
     }
 }
