@@ -15,7 +15,7 @@ class ArticleRepository: BaseRepository() {
             .create(CategoryArticlesApiInterface::class.java)
             .getArticleList(userId)
 
-    fun getCategoryArticles(companyId: String, offset: String) = this.retrofit
+    fun getCategoryArticles(companyId: String, offset: String, userId: String) = this.retrofit
             .create(ArticlesApiInterface::class.java)
-            .getArticleList(companyId, offset)
+            .getArticleList(companyId, offset, userId)
 }

@@ -31,7 +31,7 @@ class ArticleViewModel : ViewModel() {
 
     @SuppressLint("CheckResult")
     fun loadArticles(companyId: String, offset: String) {
-        articleRepository.getCategoryArticles(companyId, offset)
+        articleRepository.getCategoryArticles(companyId, offset, "userId")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ res ->
@@ -44,7 +44,7 @@ class ArticleViewModel : ViewModel() {
 
     @SuppressLint("CheckResult")
     fun loadMore(companyId: String) {
-        articleRepository.getCategoryArticles(companyId, articleList.size.toString())
+        articleRepository.getCategoryArticles(companyId, articleList.size.toString(), "userId")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ res ->

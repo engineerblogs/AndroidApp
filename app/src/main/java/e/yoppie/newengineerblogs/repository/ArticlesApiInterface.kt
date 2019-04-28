@@ -9,6 +9,7 @@ interface ArticlesApiInterface {
     @GET("test/articleList")
     fun getArticleList(
             @Query("companyId") companyId: String,
-            @Query("offset") offset: String
+            @Query("offset") offset: String,
+            @Query("userId") userId: String
     ): Observable<Category>
 }
