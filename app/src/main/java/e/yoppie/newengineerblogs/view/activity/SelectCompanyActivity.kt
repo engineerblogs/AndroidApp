@@ -23,7 +23,7 @@ class SelectCompanyActivity : AppCompatActivity(), OnCompanyRecyclerListener {
 
         val binding = DataBindingUtil.setContentView<ActivitySelectCompanyBinding>(this, R.layout.activity_select_company)
         val viewModel = ViewModelProviders.of(this).get(SelectCompanyViewModel::class.java)
-        binding.viewModel = viewModel
+        binding.selectCompanyViewModel = viewModel
 
         val gridLayoutManager = LinearLayoutManager(this)
         binding.companyRecyclerView.layoutManager = gridLayoutManager

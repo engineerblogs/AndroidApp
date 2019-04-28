@@ -33,7 +33,7 @@ class FavoriteArticleRecyclerAdapter(private val context: Fragment, viewModel: F
         val articleItemViewModel = ArticleItemViewModel()
         articleItemViewModel.setArticle(items[position])
         holder.binding.apply {
-            setVariable(BR.viewModel, articleItemViewModel)
+            setVariable(BR.favoriteArticleItemViewModel, articleItemViewModel)
             executePendingBindings()
         }
         holder.itemView.setOnClickListener {

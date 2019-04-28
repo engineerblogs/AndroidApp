@@ -5,7 +5,7 @@
     <data>
 
         <variable
-            name="viewModel"
+            name="articleItemViewModel"
             type="e.yoppie.newengineerblogs.viewmodel.ArticleItemViewModel" />
     </data>
 
@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
-                app:imageUrl="@{viewModel.thumbnail}" />
+                app:imageUrl="@{articleItemViewModel.thumbnail}" />
 
             <TextView
                 android:id="@+id/articleTitleTextView"
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12pt"
                 android:layout_toEndOf="@+id/companyImageView"
-                android:text="@{viewModel.title}"
+                android:text="@{articleItemViewModel.title}"
                 android:textColor="@android:color/black"
                 android:textStyle="bold" />
 
@@ -43,7 +43,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginLeft="12pt"
                 android:layout_toEndOf="@+id/companyImageView"
-                android:text="@{viewModel.author}" />
+                android:text="@{articleItemViewModel.author}" />
 
             <TextView
                 android:id="@+id/articlePublishedDate"
@@ -52,7 +52,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginLeft="12pt"
-                android:text="@{viewModel.publishedDate}" />
+                android:text="@{articleItemViewModel.publishedDate}" />
         </RelativeLayout>
 
     </RelativeLayout>

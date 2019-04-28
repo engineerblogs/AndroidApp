@@ -6,6 +6,7 @@ import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import e.yoppie.newengineerblogs.BR
 import e.yoppie.newengineerblogs.R
 import e.yoppie.newengineerblogs.databinding.ArticleItemBinding
 import e.yoppie.newengineerblogs.listener.OnRecyclerListener
@@ -35,7 +36,7 @@ class ArticleRecyclerAdapter(private val context: Fragment, viewModel: ArticleVi
         val articleItemViewModel = ArticleItemViewModel()
         articleItemViewModel.setArticle(items[position])
         holder.binding.apply {
-            setVariable(1, articleItemViewModel)
+            setVariable(BR.articleItemViewModel, articleItemViewModel)
             executePendingBindings()
         }
         holder.itemView.setOnClickListener {

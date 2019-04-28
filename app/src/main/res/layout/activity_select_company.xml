@@ -5,7 +5,7 @@
     <data>
 
         <variable
-            name="viewModel"
+            name="selectCompanyViewModel"
             type="e.yoppie.newengineerblogs.viewmodel.SelectCompanyViewModel" />
     </data>
 

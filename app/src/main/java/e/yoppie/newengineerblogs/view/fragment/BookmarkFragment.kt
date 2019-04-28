@@ -1,6 +1,7 @@
 package e.yoppie.newengineerblogs.view.fragment
 
 import android.annotation.SuppressLint
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -21,11 +22,12 @@ import e.yoppie.newengineerblogs.viewmodel.FavoriteArticleViewModel
 
 class BookmarkFragment : Fragment(), OnRecyclerListener {
 
-    private val favoriteArticleViewModel = FavoriteArticleViewModel()
+    private lateinit var favoriteArticleViewModel: FavoriteArticleViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        favoriteArticleViewModel = ViewModelProviders.of(activity!!).get(FavoriteArticleViewModel::class.java)
+        favoriteArticleViewModel.loadFirstFavoriteArticleList()
     }
 
     @SuppressLint("CheckResult")

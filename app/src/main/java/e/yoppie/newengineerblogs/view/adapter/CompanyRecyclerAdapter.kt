@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.jakewharton.rxbinding2.view.clicks
+import e.yoppie.newengineerblogs.BR
 import e.yoppie.newengineerblogs.R
 import e.yoppie.newengineerblogs.databinding.SelectCompanyItemBinding
 import e.yoppie.newengineerblogs.listener.OnCompanyRecyclerListener
@@ -39,7 +40,7 @@ class CompanyRecyclerAdapter(private val context: AppCompatActivity, viewModel: 
         val selectCompanyItemViewModel = SelectCompanyItemViewModel()
         selectCompanyItemViewModel.setCompany(items[position])
         holder.binding.apply {
-            setVariable(1, selectCompanyItemViewModel)
+            setVariable(BR.selectCompanyItemViewModel, selectCompanyItemViewModel)
             executePendingBindings()
         }
         holder.itemView

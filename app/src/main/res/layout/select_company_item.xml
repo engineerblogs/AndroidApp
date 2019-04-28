@@ -5,7 +5,7 @@
     <data>
 
         <variable
-            name="viewModel"
+            name="selectCompanyItemViewModel"
             type="e.yoppie.newengineerblogs.viewmodel.SelectCompanyItemViewModel" />
     </data>
 
@@ -21,7 +21,7 @@
             android:layout_height="48pt"
             android:layout_centerVertical="true"
             android:layout_margin="6pt"
-            app:imageUrl="@{viewModel.img}" />
+            app:imageUrl="@{selectCompanyItemViewModel.img}" />
 
         <TextView
             android:id="@+id/companyNameTextView"
@@ -30,7 +30,7 @@
             android:layout_centerVertical="true"
             android:layout_margin="6pt"
             android:layout_toRightOf="@+id/companyImageView"
-            android:text="@{viewModel.name}"
+            android:text="@{selectCompanyItemViewModel.name}"
             android:textColor="@android:color/black" />
 
     </RelativeLayout>

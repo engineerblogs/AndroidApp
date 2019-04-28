@@ -2,19 +2,58 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="favoriteArticleItemViewModel"
+            type="e.yoppie.newengineerblogs.viewmodel.ArticleItemViewModel" />
+    </data>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="112pt"
         android:background="@drawable/border_bottom">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80pt"
+            android:layout_margin="16pt">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="12pt"
-            android:text="@string/save" />
+            <ImageView
+                android:id="@+id/companyImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                app:imageUrl="@{favoriteArticleItemViewModel.thumbnail}" />
+
+            <TextView
+                android:id="@+id/articleTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12pt"
+                android:layout_toEndOf="@+id/companyImageView"
+                android:text="@{favoriteArticleItemViewModel.title}"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/articleAuthorTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="12pt"
+                android:layout_toEndOf="@+id/companyImageView"
+                android:text="@{favoriteArticleItemViewModel.author}" />
+
+            <TextView
+                android:id="@+id/articlePublishedDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="12pt"
+                android:text="@{favoriteArticleItemViewModel.publishedDate}" />
+        </RelativeLayout>
 
     </RelativeLayout>
 
