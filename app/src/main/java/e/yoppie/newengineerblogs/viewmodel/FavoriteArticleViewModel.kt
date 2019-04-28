@@ -6,12 +6,16 @@ import e.yoppie.newengineerblogs.di.diInterface.DaggerFavoriteArticleViewModelCo
 import e.yoppie.newengineerblogs.di.diModule.FavoriteArticleViewModelModule
 import e.yoppie.newengineerblogs.model.data.Article
 import e.yoppie.newengineerblogs.repository.FavoriteArticleRepository
+import javax.inject.Inject
 
 @Suppress("DEPRECATION")
 class FavoriteArticleViewModel : ViewModel() {
-
+    @Inject
     lateinit var favoriteArticleListLiveData: MutableLiveData<MutableList<Article>>
+
+    @Inject
     lateinit var favoriteArticleList: MutableList<Article>
+
     private var favoriteArticleRepository = FavoriteArticleRepository()
 
     init {
@@ -20,5 +24,9 @@ class FavoriteArticleViewModel : ViewModel() {
                 .favoriteArticleViewModelModule(FavoriteArticleViewModelModule())
                 .build()
         favoriteArticleViewModelComponent.inject(this)
+    }
+
+    fun loadFirstFavoriteArticleList(){
+
     }
 }

@@ -2,11 +2,9 @@ package e.yoppie.newengineerblogs.view.adapter
 
 import android.annotation.SuppressLint
 import android.databinding.DataBindingUtil
-import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.jakewharton.rxbinding2.view.clicks
@@ -14,6 +12,7 @@ import e.yoppie.newengineerblogs.R
 import e.yoppie.newengineerblogs.databinding.SelectCompanyItemBinding
 import e.yoppie.newengineerblogs.listener.OnCompanyRecyclerListener
 import e.yoppie.newengineerblogs.model.data.Company
+import e.yoppie.newengineerblogs.service.DiffCompanyCallback
 import e.yoppie.newengineerblogs.view.viewHolder.CompanyViewHolder
 import e.yoppie.newengineerblogs.viewmodel.SelectCompanyItemViewModel
 import e.yoppie.newengineerblogs.viewmodel.SelectCompanyViewModel
@@ -59,19 +58,9 @@ class CompanyRecyclerAdapter(private val context: AppCompatActivity, viewModel: 
     }
 
     private fun update(companyList: MutableList<Company>) {
-        val diff = DiffUtil.calculateDiff(DiffCallback(items, companyList))
+        val diff = DiffUtil.calculateDiff(DiffCompanyCallback(items, companyList))
         diff.dispatchUpdatesTo(this)
         this.items.clear()
         this.items.addAll(companyList)
-    }
-
-    class DiffCallback(private val oldList: MutableList<Company>, private val newList: MutableList<Company>) : DiffUtil.Callback() {
-        override fun areContentsTheSame(oldPosition: Int, newPosition: Int) = oldList[oldPosition] == (newList[newPosition])
-
-        override fun areItemsTheSame(oldPosition: Int, newPosition: Int) = oldList[oldPosition].id == (newList[newPosition]).id
-
-        override fun getNewListSize() = newList.size
-
-        override fun getOldListSize() = oldList.size
     }
 }

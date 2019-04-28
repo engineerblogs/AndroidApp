@@ -12,7 +12,6 @@ class ArticleItemViewModel : ViewModel() {
     val publishedDate = MutableLiveData<String>()
     val author = MutableLiveData<String>()
 
-
     private val item = MutableLiveData<Article>().apply {
         this.observeForever {
             it?.apply {
