@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.navigation.findNavController
@@ -29,6 +28,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setTheme(R.style.AppTheme)
         firebaseAnalytics = FirebaseAnalytics.getInstance(this)
+
         testFirebase()
 
         if (!Util.isNetConnection(this)) {
@@ -88,11 +88,11 @@ class HomeActivity : AppCompatActivity() {
     }
 
     fun testFirebase(){
-        Log.d("yoppie_debug", "testFirebase()")
         val bundle = Bundle()
         bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "01")
         bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "name")
         bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "content_type")
+        firebaseAnalytics.setUserProperty("property_foo_bar", "baz")
         firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
     }
 }

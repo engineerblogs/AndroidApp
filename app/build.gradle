@@ -10,6 +10,8 @@ apply plugin: 'io.fabric'
 
 apply plugin: 'deploygate'
 
+apply plugin: 'com.google.gms.google-services'
+
 android {
     compileSdkVersion 28
     dataBinding {
@@ -136,5 +138,3 @@ dependencies {
     debugImplementation "com.facebook.stetho:stetho:$sthetho_version"
     debugImplementation "com.facebook.stetho:stetho-okhttp3:$sthetho_version"
 }
-
-apply plugin: 'com.google.gms.google-services'
