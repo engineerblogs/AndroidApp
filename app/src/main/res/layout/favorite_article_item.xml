@@ -20,33 +20,33 @@
             android:layout_margin="16pt">
 
             <ImageView
-                android:id="@+id/companyImageView"
+                android:id="@+id/favoriteCompanyImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 app:imageUrl="@{favoriteArticleItemViewModel.thumbnail}" />
 
             <TextView
-                android:id="@+id/articleTitleTextView"
+                android:id="@+id/favoriteArticleTitleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12pt"
-                android:layout_toEndOf="@+id/companyImageView"
+                android:layout_toEndOf="@+id/favoriteCompanyImageView"
                 android:text="@{favoriteArticleItemViewModel.title}"
                 android:textColor="@android:color/black"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/articleAuthorTextView"
+                android:id="@+id/favoriteArticleAuthorTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_marginLeft="12pt"
-                android:layout_toEndOf="@+id/companyImageView"
+                android:layout_toEndOf="@+id/favoriteCompanyImageView"
                 android:text="@{favoriteArticleItemViewModel.author}" />
 
             <TextView
-                android:id="@+id/articlePublishedDate"
+                android:id="@+id/favoriteArticlePublishedDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"

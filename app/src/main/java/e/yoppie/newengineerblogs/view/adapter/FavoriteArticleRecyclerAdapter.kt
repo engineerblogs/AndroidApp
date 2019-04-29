@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil
 import android.support.v4.app.Fragment
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.android.databinding.library.baseAdapters.BR
@@ -30,10 +31,10 @@ class FavoriteArticleRecyclerAdapter(private val context: Fragment, viewModel: F
     }
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
-        val articleItemViewModel = ArticleItemViewModel()
-        articleItemViewModel.setArticle(items[position])
+        val favoriteArticleItemViewModel = ArticleItemViewModel()
+        favoriteArticleItemViewModel.setArticle(items[position])
         holder.binding.apply {
-            setVariable(BR.favoriteArticleItemViewModel, articleItemViewModel)
+            setVariable(BR.favoriteArticleItemViewModel, favoriteArticleItemViewModel)
             executePendingBindings()
         }
         holder.itemView.setOnClickListener {

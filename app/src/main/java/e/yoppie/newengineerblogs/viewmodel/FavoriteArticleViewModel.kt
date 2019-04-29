@@ -37,10 +37,9 @@ class FavoriteArticleViewModel : ViewModel() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ res ->
                     res.categories.forEach {
-                        favoriteArticleListLiveData.postValue(it.articles)
+                        favoriteArticleList.addAll(it.articles)
                     }
-//                    favoriteArticleList = res.categories
-//                    favoriteArticleListLiveData.postValue(favoriteArticleList)
+                    favoriteArticleListLiveData.postValue(favoriteArticleList)
                 }, { error ->
                     Log.d("yoshiya_debug", error.message)
                 })

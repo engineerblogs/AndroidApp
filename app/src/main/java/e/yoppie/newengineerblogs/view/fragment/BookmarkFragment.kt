@@ -22,11 +22,11 @@ import e.yoppie.newengineerblogs.viewmodel.FavoriteArticleViewModel
 
 class BookmarkFragment : Fragment(), OnRecyclerListener {
 
-    private lateinit var favoriteArticleViewModel: FavoriteArticleViewModel
+    lateinit var favoriteArticleViewModel: FavoriteArticleViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        favoriteArticleViewModel = ViewModelProviders.of(activity!!).get(FavoriteArticleViewModel::class.java)
+        favoriteArticleViewModel = ViewModelProviders.of(this).get(FavoriteArticleViewModel::class.java)
         favoriteArticleViewModel.loadFirstFavoriteArticleList()
     }
 
