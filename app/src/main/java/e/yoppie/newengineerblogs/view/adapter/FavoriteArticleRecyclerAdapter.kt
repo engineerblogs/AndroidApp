@@ -4,7 +4,6 @@ import android.databinding.DataBindingUtil
 import android.support.v4.app.Fragment
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.android.databinding.library.baseAdapters.BR
@@ -27,6 +26,7 @@ class FavoriteArticleRecyclerAdapter(private val context: Fragment, viewModel: F
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = DataBindingUtil.inflate<FavoriteArticleItemBinding>(layoutInflater, R.layout.favorite_article_item, parent, false)
+        binding.lifecycleOwner = context
         return ArticleViewHolder(binding)
     }
 
