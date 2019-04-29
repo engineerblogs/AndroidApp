@@ -36,9 +36,11 @@ class FavoriteArticleViewModel : ViewModel() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ res ->
+                    val newFavoriteArticleList: MutableList<Article> = mutableListOf()
                     res.categories.forEach {
-                        favoriteArticleList.addAll(it.articles)
+                        newFavoriteArticleList.addAll(it.articles)
                     }
+                    favoriteArticleList = newFavoriteArticleList
                     favoriteArticleListLiveData.postValue(favoriteArticleList)
                 }, { error ->
                     Log.d("yoshiya_debug", error.message)

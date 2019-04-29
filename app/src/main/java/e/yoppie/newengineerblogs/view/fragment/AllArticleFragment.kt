@@ -44,7 +44,7 @@ class AllArticleFragment : Fragment() {
     }
 
     private fun setBinding() {
-        homeViewPager.offscreenPageLimit = 5
+        homeViewPager.offscreenPageLimit = 2
         val adapter = CategoryFragmentPagerAdapter(childFragmentManager, this.viewModel)
         homeViewPager.adapter = adapter
         homeTabLayout.tabMode = TabLayout.MODE_SCROLLABLE

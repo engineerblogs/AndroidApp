@@ -35,23 +35,22 @@ class BookmarkFragment : Fragment(), OnRecyclerListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         val binding = DataBindingUtil.inflate<BookmarkFragmentBinding>(inflater, R.layout.bookmark_fragment, container, false)
-
-        // diff_point
-         binding.lifecycleOwner = this
+        binding.lifecycleOwner = this
 
         val linearLayoutManager = LinearLayoutManager(activity)
         binding.favoriteArticleRecyclerView.layoutManager = linearLayoutManager
         binding.favoriteArticleRecyclerView.adapter = FavoriteArticleRecyclerAdapter(this, favoriteArticleViewModel, this)
-//        binding.favoriteArticleRecyclerView
-//                .scrollEvents()
-//                .filter { linearLayoutManager.itemCount - 1 <= linearLayoutManager.findLastVisibleItemPosition() }
-//                .subscribe {
-//                    //favoriteArticleViewModel.loadMore(companyId)
-//                }
+        binding.favoriteArticleRecyclerView
+                .scrollEvents()
+                .filter { linearLayoutManager.itemCount - 1 <= linearLayoutManager.findLastVisibleItemPosition() }
+                .subscribe {
+                    //favoriteArticleViewModel.loadMore(companyId)
+                }
         binding.bookmarkFragmentSwipeRefreshLayout
                 .refreshes()
                 .subscribe {
-                    if(binding.bookmarkFragmentSwipeRefreshLayout.isRefreshing){
+                    favoriteArticleViewModel.loadFirstFavoriteArticleList()
+                    if (binding.bookmarkFragmentSwipeRefreshLayout.isRefreshing) {
                         binding.bookmarkFragmentSwipeRefreshLayout.isRefreshing = false
                     }
                 }
