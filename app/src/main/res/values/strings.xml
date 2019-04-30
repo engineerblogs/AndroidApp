@@ -8,6 +8,6 @@
     <string name="copy_url">URLコピー</string>
     <string name="error_network">ネットワークに接続してください</string>
     <string name="reload_network">再読み込み</string>
-    <string name="article_thumbnail">記事のサムネイル画像</string>
-    <string name="company_thumbnail">会社のサムネイル画像</string>
+    <string name="article_thumbnail">記事のサムネイル</string>
+    <string name="company_thumbnail">会社のサムネイル</string>
 </resources>
