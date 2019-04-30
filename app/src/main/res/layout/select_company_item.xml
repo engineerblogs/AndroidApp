@@ -16,6 +16,7 @@
         android:background="@color/colorNoSelectBackGround">
 
         <ImageView
+            android:contentDescription="@string/company_thumbnail"
             android:id="@+id/companyImageView"
             android:layout_width="48pt"
             android:layout_height="48pt"
@@ -29,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_margin="6pt"
-            android:layout_toRightOf="@+id/companyImageView"
+            android:layout_toEndOf="@+id/companyImageView"
             android:text="@{selectCompanyItemViewModel.name}"
             android:textColor="@android:color/black" />
 

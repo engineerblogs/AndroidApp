@@ -74,8 +74,11 @@ dependencies {
     annotationProcessor "android.arch.lifecycle:compiler:$arch_lifecycle_version"
     // Navigation
     def arch_navigation_version = '1.0.0-alpha06'
+    //noinspection GradleDependency
     implementation "android.arch.navigation:navigation-fragment-ktx:$arch_navigation_version"
+    //noinspection GradleDependency
     implementation "android.arch.navigation:navigation-ui-ktx:$arch_navigation_version"
+
     // Room
     def arch_room_version = '1.1.1'
     implementation "android.arch.persistence.room:runtime:$arch_room_version"

@@ -32,7 +32,7 @@ class FavoriteArticleViewModel : ViewModel() {
 
     @SuppressLint("CheckResult")
     fun loadFirstFavoriteArticleList() {
-        favoriteArticleRepository.getFavoriteArticles("yoppi")
+        favoriteArticleRepository.getFavoriteArticles("yoppie")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ res ->
@@ -43,7 +43,7 @@ class FavoriteArticleViewModel : ViewModel() {
                     favoriteArticleList = newFavoriteArticleList
                     favoriteArticleListLiveData.postValue(favoriteArticleList)
                 }, { error ->
-                    Log.d("yoshiya_debug", error.message)
+                    Log.d("yoppie_debug", error.message)
                 })
     }
 }

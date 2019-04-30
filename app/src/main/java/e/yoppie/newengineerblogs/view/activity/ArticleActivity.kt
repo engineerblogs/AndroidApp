@@ -39,7 +39,7 @@ class ArticleActivity : AppCompatActivity() {
                 finish()
             }
             R.id.toolBarAddItem -> {
-                Log.d("yoshiya_debug", "toolBarAddItem")
+                Log.d("yoppie_debug", "toolBarAddItem")
             }
             R.id.toolBarUrlCopyItem -> {
                 Util.clipBoardCopy(applicationContext, url)

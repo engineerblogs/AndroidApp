@@ -42,14 +42,14 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         val articleRepository = ArticleRepository()
-        var localCompanyEntitiyList: List<CompanyEntity> = mutableListOf()
+        var localCompanyEntityList: List<CompanyEntity> = mutableListOf()
         Completable
                 .fromAction {
-                    localCompanyEntitiyList = articleRepository.getLocalSavedCompanyList(this)
+                    localCompanyEntityList = articleRepository.getLocalSavedCompanyList(this)
                 }
                 .subscribeOn(Schedulers.io())
                 .subscribe {
-                    if (localCompanyEntitiyList.isEmpty()) {
+                    if (localCompanyEntityList.isEmpty()) {
                         val intent = Intent(this, SelectCompanyActivity::class.java)
                         startActivity(intent)
                     } else {
@@ -87,7 +87,7 @@ class HomeActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun testFirebase(){
+    private fun testFirebase(){
         val bundle = Bundle()
         bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "01")
         bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "name")

@@ -38,20 +38,20 @@ class ArticleViewModel : ViewModel() {
                     this.articleList = res.articles
                     this.articleListLiveData.postValue(this.articleList)
                 }, { error ->
-                    Log.d("yoshiya_debug", error.message)
+                    Log.d("yoppie_debug", error.message)
                 })
     }
 
-    @SuppressLint("CheckResult")
-    fun loadMore(companyId: String) {
-        articleRepository.getCategoryArticles(companyId, articleList.size.toString(), "userId")
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ res ->
-                    this.articleList.addAll(res.articles)
-                    this.articleListLiveData.postValue(this.articleList)
-                }, { error ->
-                    Log.d("yoshiya_debug", error.message)
-                })
-    }
+//    @SuppressLint("CheckResult")
+//    fun loadMore(companyId: String) {
+//        articleRepository.getCategoryArticles(companyId, articleList.size.toString(), "userId")
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe({ res ->
+//                    this.articleList.addAll(res.articles)
+//                    this.articleListLiveData.postValue(this.articleList)
+//                }, { error ->
+//                    Log.d("yoppie_debug", error.message)
+//                })
+//    }
 }

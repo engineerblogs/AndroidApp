@@ -14,16 +14,14 @@ import com.jakewharton.rxbinding2.support.v4.widget.refreshes
 import com.jakewharton.rxbinding2.support.v7.widget.scrollEvents
 import e.yoppie.newengineerblogs.R
 import e.yoppie.newengineerblogs.databinding.BookmarkFragmentBinding
-import e.yoppie.newengineerblogs.databinding.CategoryFragmentBinding
 import e.yoppie.newengineerblogs.listener.OnRecyclerListener
 import e.yoppie.newengineerblogs.view.activity.ArticleActivity
 import e.yoppie.newengineerblogs.view.adapter.FavoriteArticleRecyclerAdapter
-import e.yoppie.newengineerblogs.viewmodel.ArticleViewModel
 import e.yoppie.newengineerblogs.viewmodel.FavoriteArticleViewModel
 
 class BookmarkFragment : Fragment(), OnRecyclerListener {
 
-    lateinit var favoriteArticleViewModel: FavoriteArticleViewModel
+    private lateinit var favoriteArticleViewModel: FavoriteArticleViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

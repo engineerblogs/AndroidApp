@@ -13,7 +13,7 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/ic_heart_off" />
+            android:src="@android:drawable/btn_star_big_off" />
     </item>
 
 </layer-list>
