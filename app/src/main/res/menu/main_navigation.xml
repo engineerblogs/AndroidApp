@@ -6,7 +6,6 @@
         android:title="@string/blogs" />
 
     <item
-        android:id="@+id/bookmarkItem"
         android:icon="@android:drawable/stat_notify_more"
         android:title="@string/bookmark" />
 </menu>

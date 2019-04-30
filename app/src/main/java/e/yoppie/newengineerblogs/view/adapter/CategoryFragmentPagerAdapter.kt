@@ -2,11 +2,7 @@ package e.yoppie.newengineerblogs.view.adapter
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.app.FragmentStatePagerAdapter
-import android.support.v4.view.PagerAdapter
-import android.util.Log
-import android.view.ViewGroup
 import e.yoppie.newengineerblogs.model.data.Category
 import e.yoppie.newengineerblogs.view.fragment.CategoryFragment
 import e.yoppie.newengineerblogs.viewmodel.CompanyViewModel

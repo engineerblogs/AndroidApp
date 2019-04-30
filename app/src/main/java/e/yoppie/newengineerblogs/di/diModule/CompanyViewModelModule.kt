@@ -15,10 +15,10 @@ class CompanyViewModelModule {
     fun provideCategoryListData(): MutableLiveData<MutableList<Category>>{
         val mutableLiveData = MutableLiveData<MutableList<Category>>()
         val articles = mutableListOf(
-                Article("100", "title", "thumnail", "url", "publishedDate", "author")
+                Article("100", "title", "thumbnail", "url", "publishedDate", "author")
         )
         mutableLiveData.value = mutableListOf(
-                Category("yoyo", "100", articles)
+                Category("yoppie", "100", articles)
         )
         return mutableLiveData
     }

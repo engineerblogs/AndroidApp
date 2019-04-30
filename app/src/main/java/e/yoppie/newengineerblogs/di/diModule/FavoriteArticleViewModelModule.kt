@@ -10,7 +10,7 @@ import javax.inject.Singleton
 class FavoriteArticleViewModelModule {
 
     private val articleList = mutableListOf(
-            Article("100", "title", "thumnail", "url", "publishedDate", "author")
+            Article("100", "title", "thumbnail", "url", "publishedDate", "author")
     )
 
     @Singleton

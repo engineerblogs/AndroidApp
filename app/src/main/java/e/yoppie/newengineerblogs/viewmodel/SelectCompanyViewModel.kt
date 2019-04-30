@@ -46,7 +46,7 @@ class SelectCompanyViewModel : ViewModel() {
                     companyListData.postValue(res.companies)
                     selectProgressbar.visibility = ProgressBar.INVISIBLE
                 }, { error ->
-                    Log.d("yoshiya_debug", error.message)
+                    Log.d("yoppie_debug", error.message)
                 })
     }
 

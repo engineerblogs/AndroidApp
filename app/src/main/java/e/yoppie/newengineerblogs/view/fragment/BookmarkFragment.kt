@@ -11,19 +11,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.jakewharton.rxbinding2.support.v4.widget.refreshes
-import com.jakewharton.rxbinding2.support.v7.widget.scrollEvents
 import e.yoppie.newengineerblogs.R
 import e.yoppie.newengineerblogs.databinding.BookmarkFragmentBinding
-import e.yoppie.newengineerblogs.databinding.CategoryFragmentBinding
 import e.yoppie.newengineerblogs.listener.OnRecyclerListener
 import e.yoppie.newengineerblogs.view.activity.ArticleActivity
 import e.yoppie.newengineerblogs.view.adapter.FavoriteArticleRecyclerAdapter
-import e.yoppie.newengineerblogs.viewmodel.ArticleViewModel
 import e.yoppie.newengineerblogs.viewmodel.FavoriteArticleViewModel
 
 class BookmarkFragment : Fragment(), OnRecyclerListener {
 
-    lateinit var favoriteArticleViewModel: FavoriteArticleViewModel
+    private lateinit var favoriteArticleViewModel: FavoriteArticleViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,12 +37,12 @@ class BookmarkFragment : Fragment(), OnRecyclerListener {
         val linearLayoutManager = LinearLayoutManager(activity)
         binding.favoriteArticleRecyclerView.layoutManager = linearLayoutManager
         binding.favoriteArticleRecyclerView.adapter = FavoriteArticleRecyclerAdapter(this, favoriteArticleViewModel, this)
-        binding.favoriteArticleRecyclerView
-                .scrollEvents()
-                .filter { linearLayoutManager.itemCount - 1 <= linearLayoutManager.findLastVisibleItemPosition() }
-                .subscribe {
-                    //favoriteArticleViewModel.loadMore(companyId)
-                }
+//        binding.favoriteArticleRecyclerView
+//                .scrollEvents()
+//                .filter { linearLayoutManager.itemCount - 1 <= linearLayoutManager.findLastVisibleItemPosition() }
+//                .subscribe {
+//                    //favoriteArticleViewModel.loadMore(companyId)
+//                }
         binding.bookmarkFragmentSwipeRefreshLayout
                 .refreshes()
                 .subscribe {

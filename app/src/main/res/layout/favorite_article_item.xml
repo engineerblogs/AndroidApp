@@ -11,50 +11,36 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="112pt"
-        android:background="@drawable/border_bottom">
+        android:layout_height="100pt"
+        android:background="@drawable/border_bottom"
+        android:padding="16pt">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="80pt"
-            android:layout_margin="16pt">
+        <ImageView
+            android:id="@+id/favoriteCompanyImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/article_thumbnail"
+            app:imageUrl="@{favoriteArticleItemViewModel.thumbnail}" />
 
-            <ImageView
-                android:id="@+id/favoriteCompanyImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_centerVertical="true"
-                app:imageUrl="@{favoriteArticleItemViewModel.thumbnail}" />
+        <TextView
+            android:id="@+id/favoriteArticleTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_12pt"
+            android:layout_toEndOf="@+id/favoriteCompanyImageView"
+            android:text="@{favoriteArticleItemViewModel.title}"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/favoriteArticleTitleTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12pt"
-                android:layout_toEndOf="@+id/favoriteCompanyImageView"
-                android:text="@{favoriteArticleItemViewModel.title}"
-                android:textColor="@android:color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/favoriteArticleAuthorTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="12pt"
-                android:layout_toEndOf="@+id/favoriteCompanyImageView"
-                android:text="@{favoriteArticleItemViewModel.author}" />
-
-            <TextView
-                android:id="@+id/favoriteArticlePublishedDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="12pt"
-                android:text="@{favoriteArticleItemViewModel.publishedDate}" />
-        </RelativeLayout>
-
+        <TextView
+            android:id="@+id/favoriteArticleAuthorTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/margin_12pt"
+            android:layout_toEndOf="@+id/favoriteCompanyImageView"
+            android:text='@{favoriteArticleItemViewModel.author + " " + favoriteArticleItemViewModel.publishedDate}' />
     </RelativeLayout>
 
 </layout>

@@ -3,7 +3,6 @@ package e.yoppie.newengineerblogs.view.activity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.webkit.WebViewClient
@@ -38,9 +37,7 @@ class ArticleActivity : AppCompatActivity() {
             android.R.id.home -> {
                 finish()
             }
-            R.id.toolBarAddItem -> {
-                Log.d("yoshiya_debug", "toolBarAddItem")
-            }
+            R.id.toolBarAddItem -> { }
             R.id.toolBarUrlCopyItem -> {
                 Util.clipBoardCopy(applicationContext, url)
                 Snackbar.make(

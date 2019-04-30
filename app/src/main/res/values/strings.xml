@@ -1,16 +1,13 @@
 <resources>
     <string name="app_name">Engineer Blogs</string>
-    <string name="title_activity_article">ArticleActivity</string>
     <string name="select_interesting_topic">興味のあるトピックを追加してください</string>
     <string name="save">保存</string>
     <string name="title">タイトル</string>
-    <string name="title_activity_home">HomeActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <string name="blogs">ブログ</string>
     <string name="bookmark">ブックマーク</string>
     <string name="copy_url">URLコピー</string>
     <string name="error_network">ネットワークに接続してください</string>
     <string name="reload_network">再読み込み</string>
+    <string name="article_thumbnail">記事のサムネイル画像</string>
+    <string name="company_thumbnail">会社のサムネイル画像</string>
 </resources>
