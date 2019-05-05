@@ -12,8 +12,6 @@ apply plugin: 'deploygate'
 
 apply plugin: 'com.google.gms.google-services'
 
-apply plugin: 'de.mannodermaus.android-junit5'
-
 android {
     compileSdkVersion 28
     dataBinding {
@@ -42,6 +40,11 @@ android {
     lintOptions {
         lintConfig file('lint.xml')
     }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -56,12 +59,16 @@ dependencies {
     implementation 'com.android.support:support-vector-drawable:28.0.0'
 
     // Junit
-    def junit_version = '5.4.2'
-    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_version"
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_version"
+    testImplementation 'junit:junit:4.12'
+
+    // Runner
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
 
     // Espresso
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // Robolectric
+    testImplementation 'org.robolectric:robolectric:4.2'
 
     // Jdk
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
