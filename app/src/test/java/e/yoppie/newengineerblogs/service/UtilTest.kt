@@ -8,21 +8,17 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
-import org.robolectric.RuntimeEnvironment
+import androidx.test.platform.app.InstrumentationRegistry
 import org.assertj.core.api.Assertions.*
+import org.robolectric.RobolectricTestRunner
 
 @Suppress("DEPRECATION")
 @RunWith(RobolectricTestRunner::class)
 class UtilTest {
 
     @Test
-    fun loadImage() {
-    }
-
-    @Test
     fun clipBoardCopy() {
-        val context = RuntimeEnvironment.application
+        val context = InstrumentationRegistry.getInstrumentation().context
         Util.clipBoardCopy(context, "clip_test")
         val clipboardManager: ClipboardManager = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clipText = clipboardManager.text
