@@ -2,6 +2,10 @@ package e.yoppie.newengineerblogs.service
 
 import android.content.ClipboardManager
 import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
+import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.whenever
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -27,6 +31,15 @@ class UtilTest {
 
     @Test
     fun isNetConnection() {
+        val networkInfo: NetworkInfo = mock(name = "NetworkInfo")
+        whenever(networkInfo.isConnected).thenReturn(true)
 
+        val connectivityManager: ConnectivityManager = mock(name = "ConnectivityManager")
+        whenever(connectivityManager.activeNetworkInfo).thenReturn(networkInfo)
+
+        val context: Context = mock(name = "Context")
+        whenever(context.getSystemService(Context.CONNECTIVITY_SERVICE)).thenReturn(connectivityManager)
+
+        assertThat(Util.isNetConnection(context)).isTrue()
     }
 }
