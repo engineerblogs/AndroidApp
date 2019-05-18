@@ -9,7 +9,7 @@ import org.robolectric.RobolectricTestRunner
 
 @RunWith(RobolectricTestRunner::class)
 class DiffArticleCallbackTest {
-    lateinit var diffArticleCallback: DiffArticleCallback
+    private lateinit var diffArticleCallback: DiffArticleCallback
 
     private val oldArticles = mutableListOf(
             Article("0", "title_0", "thumbnail_0", "url_0", "publishedDate_0", "author_0"),

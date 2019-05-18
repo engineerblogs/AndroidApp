@@ -9,7 +9,7 @@ import org.assertj.core.api.Assertions.*
 
 @RunWith(RobolectricTestRunner::class)
 class DiffCompanyCallbackTest {
-    lateinit var diffCompanyCallback: DiffCompanyCallback
+    private lateinit var diffCompanyCallback: DiffCompanyCallback
 
     private val oldCompanies = mutableListOf(
             Company("0", "name_0", "img_0"),
