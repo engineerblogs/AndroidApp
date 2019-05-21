@@ -26,8 +26,4 @@ class ArticleViewModelTest {
         articleViewModel.set(articleList)
         assertThat(articleViewModel.articleListLiveData.value).containsAll(articleList)
     }
-
-    @Test
-    fun loadArticles() {
-    }
 }
