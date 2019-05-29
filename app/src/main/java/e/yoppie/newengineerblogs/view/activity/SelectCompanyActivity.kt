@@ -25,8 +25,8 @@ class SelectCompanyActivity : AppCompatActivity(), OnCompanyRecyclerListener {
         val viewModel = ViewModelProviders.of(this).get(SelectCompanyViewModel::class.java)
         binding.selectCompanyViewModel = viewModel
 
-        val gridLayoutManager = LinearLayoutManager(this)
-        binding.companyRecyclerView.layoutManager = gridLayoutManager
+        val linearLayoutManager = LinearLayoutManager(this)
+        binding.companyRecyclerView.layoutManager = linearLayoutManager
         binding.companyRecyclerView.adapter = CompanyRecyclerAdapter(this, viewModel, this)
 
         binding.companySelectButton
@@ -38,7 +38,7 @@ class SelectCompanyActivity : AppCompatActivity(), OnCompanyRecyclerListener {
 
         binding.companyRecyclerView
                 .scrollEvents()
-                .filter { gridLayoutManager.itemCount - 1 <= gridLayoutManager.findLastVisibleItemPosition() }
+                .filter { linearLayoutManager.itemCount - 1 <= linearLayoutManager.findLastVisibleItemPosition() }
                 .subscribe { viewModel.loadMoreCompanyList() }
 
         viewModel.loadFirstCompanyList(binding.selectProgressbar)
