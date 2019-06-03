@@ -10,3 +10,4 @@ app/.gitignore
 app/proguard-rules.pro
 .idea/*.xml
 app/release/
+app/src/test/resources/
