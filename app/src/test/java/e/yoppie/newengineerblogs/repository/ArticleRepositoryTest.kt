@@ -21,7 +21,7 @@ class ArticleRepositoryTest {
     fun setUp() {
         val dispatcher: Dispatcher = object : Dispatcher() {
             override fun dispatch(request: RecordedRequest?): MockResponse {
-                return when{
+                return when {
                     request!!.requestLine == "https://9hqe5z0uw7.execute-api.ap-northeast-1.amazonaws.com/test/articleList?userId=111"
                     -> MockResponse().setResponseCode(200).setBodyFromFileName("articleList.json")
                     request.requestLine == "https://9hqe5z0uw7.execute-api.ap-northeast-1.amazonaws.com/test/articleList?companyId=003&offset=1&userId=1"
