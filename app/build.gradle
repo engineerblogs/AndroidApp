@@ -155,6 +155,7 @@ dependencies {
     def okhttp_version = '3.13.1'
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$okhttp_version"
 
     // Glide
     def glide_version = '4.9.0'
