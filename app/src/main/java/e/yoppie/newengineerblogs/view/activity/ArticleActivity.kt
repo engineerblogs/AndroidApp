@@ -10,7 +10,6 @@ import android.webkit.WebViewClient
 import e.yoppie.newengineerblogs.R
 import e.yoppie.newengineerblogs.service.Util
 import kotlinx.android.synthetic.main.activity_article.*
-import androidx.navigation.NavOptions
 
 class ArticleActivity : AppCompatActivity() {
 
