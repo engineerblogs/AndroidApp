@@ -5,7 +5,6 @@ import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.jakewharton.rxbinding2.view.clicks
