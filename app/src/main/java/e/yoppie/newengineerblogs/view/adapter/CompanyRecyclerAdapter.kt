@@ -26,7 +26,6 @@ class CompanyRecyclerAdapter(private val context: AppCompatActivity, viewModel: 
         viewModel.companyListData.observe({ context.lifecycle }, { it?.apply { update(this) } })
     }
 
-    @SuppressLint("CheckResult")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CompanyViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = DataBindingUtil.inflate<SelectCompanyItemBinding>(layoutInflater, R.layout.select_company_item, parent, false)
