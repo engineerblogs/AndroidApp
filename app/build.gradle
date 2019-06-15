@@ -166,4 +166,8 @@ dependencies {
     def sthetho_version = '1.5.1'
     debugImplementation "com.facebook.stetho:stetho:$sthetho_version"
     debugImplementation "com.facebook.stetho:stetho-okhttp3:$sthetho_version"
+
+    // Lottie
+    def lottie_version = '2.7.0'
+    implementation "com.airbnb.android:lottie:$lottie_version"
 }
