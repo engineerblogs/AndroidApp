@@ -30,7 +30,8 @@ class CompanyRecyclerAdapter(private val context: AppCompatActivity, viewModel: 
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = DataBindingUtil.inflate<SelectCompanyItemBinding>(layoutInflater, R.layout.select_company_item, parent, false)
         binding.lifecycleOwner = context
-        return CompanyViewHolder(binding)
+
+        return CompanyViewHolder(binding, binding.root)
     }
 
     override fun getItemCount() = items.size
@@ -48,9 +49,11 @@ class CompanyRecyclerAdapter(private val context: AppCompatActivity, viewModel: 
                 .subscribe {
                     val companyId = items[position].id
                     if (this.companyIdList.contains(companyId)) {
+                        holder.favoriteLottieAnimationView.progress = 0f
                         holder.itemView.setBackgroundResource(R.color.colorNoSelectBackGround)
                         this.companyIdList.remove(companyId)
                     } else {
+                        holder.favoriteLottieAnimationView.playAnimation()
                         holder.itemView.setBackgroundResource(R.color.colorSelectBackGround)
                         this.companyIdList.add(companyId)
                     }
