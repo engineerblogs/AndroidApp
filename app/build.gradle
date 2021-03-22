@@ -98,7 +98,7 @@ dependencies {
     implementation "android.arch.lifecycle:reactivestreams:$arch_lifecycle_version"
     annotationProcessor "android.arch.lifecycle:compiler:$arch_lifecycle_version"
     // Navigation
-    def arch_navigation_version = '1.0.0-alpha06'
+    def arch_navigation_version = '1.0.0'
     //noinspection GradleDependency
     implementation "android.arch.navigation:navigation-fragment-ktx:$arch_navigation_version"
     //noinspection GradleDependency
