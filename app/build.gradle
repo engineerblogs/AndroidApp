@@ -65,7 +65,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     // Assertj
-    testImplementation 'org.assertj:assertj-core:3.11.1'
+    testImplementation 'org.assertj:assertj-core:3.20.2'
 
     // Runner
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
